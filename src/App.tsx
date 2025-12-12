@@ -10,6 +10,11 @@ import B2B from "./pages/B2B";
 import Contact from "./pages/Contact";
 import ProductDetail from "./pages/ProductDetail";
 import Manufacturing from "./pages/Manufacturing";
+import FAQ from "./pages/FAQ";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import RefundPolicy from "./pages/RefundPolicy";
+import ShippingPolicy from "./pages/ShippingPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +34,11 @@ const App = () => (
           <Route path="/b2b" element={<B2B />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/manufacturing" element={<Manufacturing />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/returns" element={<RefundPolicy />} />
+          <Route path="/shipping" element={<ShippingPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
