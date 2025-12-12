@@ -22,13 +22,12 @@ const footerLinks = {
     { name: "FAQ", href: "/faq" },
     { name: "Shipping Policy", href: "/shipping" },
     { name: "Returns & Exchanges", href: "/returns" },
-    { name: "Size Guide", href: "/size-guide" },
-    { name: "Track Order", href: "/track-order" },
+    { name: "Contact Us", href: "/contact" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
+    { name: "Refund Policy", href: "/returns" },
   ],
 };
 
