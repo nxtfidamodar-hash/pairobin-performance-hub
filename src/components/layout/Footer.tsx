@@ -1,6 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+
+const paymentMethods = [
+  { name: "Visa", icon: "💳" },
+  { name: "Mastercard", icon: "💳" },
+  { name: "Maestro", icon: "💳" },
+  { name: "American Express", icon: "💳" },
+  { name: "Diners Club", icon: "💳" },
+  { name: "Discover", icon: "💳" },
+  { name: "JCB", icon: "💳" },
+];
 
 const footerLinks = {
   shop: [
@@ -39,6 +51,31 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) {
+      toast({
+        title: "Please enter your email",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    // Simulate submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    toast({
+      title: "Successfully subscribed!",
+      description: "Thank you for joining the Pairobin community.",
+    });
+    setEmail("");
+    setIsSubmitting(false);
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Newsletter Section */}
@@ -46,21 +83,28 @@ export function Footer() {
         <div className="container-wide py-12 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <h3 className="font-heading text-2xl font-bold mb-2">
-                Join the Pairobin Community
+              <h3 className="font-heading text-2xl font-bold italic mb-2">
+                Newsletter Sign Up
               </h3>
               <p className="text-primary-foreground/70 max-w-md">
-                Get exclusive offers, new product launches, and performance tips delivered to your inbox.
+                Receive our latest updates about our products & promotions.
               </p>
             </div>
-            <form className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="px-6 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-accent min-w-[280px]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                className="px-6 py-4 rounded-full bg-primary-foreground text-primary placeholder:text-primary/50 focus:outline-none focus:ring-2 focus:ring-accent min-w-[320px]"
+                required
               />
-              <Button variant="accent" size="default">
-                Subscribe
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="rounded-full px-8 py-4 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
               </Button>
             </form>
           </div>
@@ -176,25 +220,48 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10">
-        <div className="container-wide py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-primary-foreground/50">
-              © {new Date().getFullYear()} Pairobin. All rights reserved.
+        <div className="container-wide py-8">
+          <div className="flex flex-col items-center gap-6">
+            <p className="text-sm text-primary-foreground/70 text-center">
+              © {new Date().getFullYear()} <span className="font-bold text-primary-foreground">Pairobin,</span> All Rights Reserved. Designed By Jibril Soft
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-            <div className="flex items-center gap-4">
-              <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/flags/4x3/us.svg" alt="USA" className="w-6 h-4" />
-              <span className="text-sm text-primary-foreground/50">USD $</span>
+            
+            {/* Payment Methods */}
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {/* Visa */}
+              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <span className="text-[#1A1F71] font-bold text-lg italic">VISA</span>
+              </div>
+              {/* Mastercard */}
+              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <div className="flex">
+                  <div className="w-5 h-5 rounded-full bg-[#EB001B]"></div>
+                  <div className="w-5 h-5 rounded-full bg-[#F79E1B] -ml-2"></div>
+                </div>
+              </div>
+              {/* Maestro */}
+              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <div className="flex">
+                  <div className="w-5 h-5 rounded-full bg-[#0066CC]"></div>
+                  <div className="w-5 h-5 rounded-full bg-[#CC0000] -ml-2"></div>
+                </div>
+              </div>
+              {/* Amex */}
+              <div className="bg-[#006FCF] rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <span className="text-white font-bold text-xs">AMEX</span>
+              </div>
+              {/* Diners Club */}
+              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <span className="text-[#004A97] font-bold text-lg">D</span>
+              </div>
+              {/* Discover */}
+              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <span className="text-[#FF6600] font-bold text-xs">DISCOVER</span>
+              </div>
+              {/* JCB */}
+              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
+                <span className="text-[#0066CC] font-bold text-sm">JCB</span>
+              </div>
             </div>
           </div>
         </div>
