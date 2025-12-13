@@ -17,6 +17,17 @@ import productWalking from "@/assets/product-walking-1.jpg";
 import productKids from "@/assets/product-kids-1.jpg";
 import productOutdoor from "@/assets/product-outdoor-1.jpg";
 
+// New product images from Wecoosport
+import cheerleadingBlack from "@/assets/products/cheerleading-black.jpg";
+import tennisWhite from "@/assets/products/tennis-white.png";
+import tennisPerformance from "@/assets/products/tennis-performance.png";
+import walkingCushioned from "@/assets/products/walking-cushioned.jpg";
+import hikingAqua from "@/assets/products/hiking-aqua.jpg";
+import pickleballCourt from "@/assets/products/pickleball-court.jpg";
+import cyclingIndoorPro from "@/assets/products/cycling-indoor-pro.jpg";
+import tennisLateral from "@/assets/products/tennis-lateral.png";
+import walkingSock from "@/assets/products/walking-sock.jpg";
+
 export type ProductBadge = "bestseller" | "new" | "sale";
 
 export interface Product {
@@ -159,6 +170,27 @@ export const products: Product[] = [
       "Recessed SPD cleats included",
       "Premium mesh upper",
       "Velcro strap closure"
+    ]
+  },
+  {
+    id: "indoor-cycling-pro",
+    name: "Professional Indoor Cycling Shoes",
+    category: "Cycling",
+    price: 69.00,
+    rating: 4.8,
+    reviewCount: 203,
+    image: cyclingIndoorPro,
+    badge: "new",
+    colors: ["#000000", "#FFFFFF", "#FF6B35"],
+    sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "Professional-grade indoor cycling shoes with superior power transfer and ventilation for intense spinning sessions.",
+    features: [
+      "Delta/SPD compatible cleats",
+      "Rigid carbon-reinforced sole",
+      "Maximum power transfer",
+      "Breathable mesh panels",
+      "Secure ratchet closure",
+      "OEM/ODM customization available"
     ]
   },
 
@@ -391,6 +423,46 @@ export const products: Product[] = [
       "Durable construction"
     ]
   },
+  {
+    id: "lightweight-cushioned-walking",
+    name: "Lightweight Cushioned Walking Sneakers",
+    category: "Walking",
+    price: 29.00,
+    rating: 4.6,
+    reviewCount: 178,
+    image: walkingCushioned,
+    badge: "bestseller",
+    colors: ["#1e3a5f", "#FF6B35", "#000000"],
+    sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "Ultra-lightweight cushioned walking sneakers with breathable mesh for maximum comfort during long walks.",
+    features: [
+      "Lightweight EVA cushioning",
+      "Breathable mesh upper",
+      "Flexible rubber outsole",
+      "Slip-on convenience",
+      "All-day comfort support"
+    ]
+  },
+  {
+    id: "walking-sock-sneakers",
+    name: "Lightweight Cushioned Walking Sock Sneakers",
+    category: "Walking",
+    price: 29.00,
+    rating: 4.7,
+    reviewCount: 143,
+    image: walkingSock,
+    badge: "new",
+    colors: ["#000000", "#1e3a5f", "#FF6B35"],
+    sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "Sock-style walking sneakers with lightweight cushioning for an ultra-comfortable fit that moves with you.",
+    features: [
+      "Sock-like fit design",
+      "Breathable knit upper",
+      "Lightweight cushioned sole",
+      "Slip-on style",
+      "Flexible comfort"
+    ]
+  },
 
   // KIDS SHOES
   {
@@ -492,10 +564,138 @@ export const products: Product[] = [
       "Breathable lining",
       "Lightweight design"
     ]
+  },
+  {
+    id: "water-hiking-aqua",
+    name: "Outdoor Water Hiking Shoes",
+    category: "Outdoor",
+    price: 39.00,
+    rating: 4.7,
+    reviewCount: 89,
+    image: hikingAqua,
+    badge: "new",
+    colors: ["#2f4f4f", "#000000", "#1e3a5f"],
+    sizes: ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"],
+    description: "Quick-dry aqua trekking footwear perfect for water activities and hiking. Lightweight with excellent drainage.",
+    features: [
+      "Quick-dry technology",
+      "Drainage holes for water activities",
+      "Non-slip rubber outsole",
+      "Breathable mesh upper",
+      "Lightweight construction",
+      "OEM/ODM available"
+    ]
+  },
+
+  // TENNIS SHOES (NEW CATEGORY)
+  {
+    id: "tennis-breathable-training",
+    name: "Breathable Tennis Shoes for Training & Match Play",
+    category: "Tennis",
+    price: 15.00,
+    rating: 4.5,
+    reviewCount: 67,
+    image: tennisWhite,
+    colors: ["#FFFFFF", "#000000", "#1e3a5f"],
+    sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "Breathable tennis shoes designed for training sessions and competitive match play. Excellent court grip.",
+    features: [
+      "Breathable mesh upper",
+      "Non-marking rubber outsole",
+      "Cushioned insole",
+      "Lightweight design",
+      "Court-ready traction"
+    ]
+  },
+  {
+    id: "tennis-high-performance",
+    name: "High-Performance Tennis Shoes",
+    category: "Tennis",
+    price: 15.00,
+    rating: 4.6,
+    reviewCount: 94,
+    image: tennisPerformance,
+    badge: "new",
+    colors: ["#FFFFFF", "#FF6B35", "#000000"],
+    sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "High-performance tennis shoes for men and women. Built for speed and agility on any court surface.",
+    features: [
+      "Performance-focused design",
+      "Enhanced lateral support",
+      "Breathable construction",
+      "Durable rubber sole",
+      "Unisex fit"
+    ]
+  },
+  {
+    id: "tennis-lateral-moves",
+    name: "Tennis Shoes Engineered for Quick Lateral Moves",
+    category: "Tennis",
+    price: 15.00,
+    rating: 4.7,
+    reviewCount: 112,
+    image: tennisLateral,
+    badge: "bestseller",
+    colors: ["#FFFFFF", "#1e3a5f", "#FF6B35"],
+    sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "Tennis shoes specifically engineered for quick lateral movements. Superior ankle support and stability.",
+    features: [
+      "Lateral support technology",
+      "Quick-pivot outsole design",
+      "Reinforced sidewalls",
+      "Breathable upper",
+      "Court-grip traction"
+    ]
+  },
+
+  // PICKLEBALL SHOES (NEW CATEGORY)
+  {
+    id: "pickleball-court-shoes",
+    name: "Pickleball Shoes for Indoor & Outdoor Courts",
+    category: "Pickleball",
+    price: 69.00,
+    rating: 4.8,
+    reviewCount: 156,
+    image: pickleballCourt,
+    badge: "new",
+    colors: ["#FFFFFF", "#000000", "#FF6B35"],
+    sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"],
+    description: "Purpose-built pickleball shoes for men and women. Designed for both indoor and outdoor court surfaces.",
+    features: [
+      "Multi-court versatility",
+      "Non-marking sole",
+      "Lateral stability support",
+      "Breathable upper",
+      "Cushioned comfort",
+      "OEM/ODM customization available"
+    ]
+  },
+
+  // CHEERLEADING SHOES (NEW CATEGORY)
+  {
+    id: "cheerleading-black-customizable",
+    name: "Black Cheerleading Shoes",
+    category: "Cheerleading",
+    price: 39.00,
+    rating: 4.7,
+    reviewCount: 89,
+    image: cheerleadingBlack,
+    badge: "new",
+    colors: ["#000000", "#FFFFFF"],
+    sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
+    description: "Professional black cheerleading shoes with customizable options. Perfect for cheer teams and competitions.",
+    features: [
+      "Lightweight design",
+      "Flexible sole for stunts",
+      "Breathable upper",
+      "Secure fit",
+      "Retail & wholesale available",
+      "Customizable for teams"
+    ]
   }
 ];
 
-// Category configuration
+// Category configuration - updated with new categories
 export const categories = [
   { name: "All", slug: "all", count: products.length },
   { name: "Running", slug: "running", count: products.filter(p => p.category === "Running").length },
@@ -504,11 +704,14 @@ export const categories = [
   { name: "Kids", slug: "kids", count: products.filter(p => p.category === "Kids").length },
   { name: "Outdoor", slug: "outdoor", count: products.filter(p => p.category === "Outdoor").length },
   { name: "Roller", slug: "roller", count: products.filter(p => p.category === "Roller").length },
+  { name: "Tennis", slug: "tennis", count: products.filter(p => p.category === "Tennis").length },
+  { name: "Pickleball", slug: "pickleball", count: products.filter(p => p.category === "Pickleball").length },
+  { name: "Cheerleading", slug: "cheerleading", count: products.filter(p => p.category === "Cheerleading").length },
 ];
 
 // Get featured products
 export const getFeaturedProducts = () => {
-  return products.filter(p => p.badge === "bestseller" || p.badge === "new").slice(0, 6);
+  return products.filter(p => p.badge === "bestseller" || p.badge === "new").slice(0, 8);
 };
 
 // Get products by category
