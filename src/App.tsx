@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Shop from "./pages/Shop";
 import B2B from "./pages/B2B";
 import Contact from "./pages/Contact";
-import ProductDetail from "./pages/ProductDetail";
+import ShopifyProductDetail from "./pages/ShopifyProductDetail";
 import Manufacturing from "./pages/Manufacturing";
 import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -31,7 +31,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:category" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/product/:handle" element={<ShopifyProductDetail />} />
           <Route path="/b2b" element={<B2B />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/manufacturing" element={<Manufacturing />} />
