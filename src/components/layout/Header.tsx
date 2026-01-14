@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, ShoppingBag, Search, User, ChevronDown } from "lucide-react";
+import { Menu, X, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CartDrawer } from "@/components/shop/CartDrawer";
 
 const navigation = [
   { name: "Shop", href: "/shop" },
@@ -55,12 +56,7 @@ export function Header() {
             <button className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary transition-colors">
               <User className="w-5 h-5" />
             </button>
-            <button className="relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary transition-colors">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                0
-              </span>
-            </button>
+            <CartDrawer />
 
             {/* Mobile Menu Button */}
             <button
