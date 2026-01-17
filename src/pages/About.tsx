@@ -1,59 +1,28 @@
 import { Layout } from "@/components/layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, Heart, Zap, Shield, Award, Users, Globe, Factory, Microscope, Leaf, Sparkles } from "lucide-react";
+import { ArrowRight, Target, Heart, Shield, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const values = [
   {
     icon: Target,
-    title: "Performance First",
-    description: "Every shoe is engineered to maximize athletic performance and help you achieve your goals.",
+    title: "Quality Focus",
+    description: "Every shoe is designed with attention to detail and quality control.",
   },
   {
     icon: Heart,
-    title: "Comfort Always",
-    description: "We never compromise on comfort. Your feet deserve the best cushioning and support.",
-  },
-  {
-    icon: Zap,
-    title: "Innovation Driven",
-    description: "Constantly pushing boundaries with new materials, technologies, and designs.",
+    title: "Comfort First",
+    description: "We prioritize comfort in every design for everyday wear.",
   },
   {
     icon: Shield,
-    title: "Quality Assured",
-    description: "Rigorous testing ensures every pair meets our exacting standards for durability.",
-  },
-];
-
-const milestones = [
-  { year: "2008", title: "Founded", description: "Pairobin started with a vision to create better athletic footwear." },
-  { year: "2012", title: "First Collection", description: "Launched our inaugural running shoe collection to rave reviews." },
-  { year: "2016", title: "Global Expansion", description: "Expanded distribution to 15+ countries across 4 continents." },
-  { year: "2020", title: "Sustainability", description: "Launched eco-friendly line with recycled materials." },
-  { year: "2024", title: "Innovation Lab", description: "Opened state-of-the-art R&D facility for next-gen footwear." },
-];
-
-const capabilities = [
-  {
-    icon: Factory,
-    title: "Advanced Manufacturing",
-    description: "State-of-the-art production facilities with automated quality control systems ensuring consistent excellence in every pair.",
+    title: "Durability",
+    description: "Built to last with quality materials and construction.",
   },
   {
-    icon: Microscope,
-    title: "Material Innovation",
-    description: "Our R&D team sources and develops proprietary materials for superior breathability, cushioning, and durability.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainable Practices",
-    description: "Committed to reducing our environmental footprint through recycled materials and responsible manufacturing.",
-  },
-  {
-    icon: Sparkles,
-    title: "Custom Design",
-    description: "Full OEM/ODM capabilities to bring your unique footwear vision to life with our expert design team.",
+    icon: CheckCircle,
+    title: "Direct to You",
+    description: "We sell directly to customers through our official website.",
   },
 ];
 
@@ -68,15 +37,16 @@ const About = () => {
         <div className="container-wide relative z-10">
           <div className="max-w-3xl">
             <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 animate-fade-in">
-              Our Story
+              About Us
             </p>
             <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.1] mb-6 animate-slide-up">
-              Engineered for Excellence
+              Quality Footwear for Everyday Wear
             </h1>
             <p className="text-xl text-primary-foreground/80 leading-relaxed animate-slide-up stagger-1">
-              For over 15 years, Pairobin has been at the forefront of athletic footwear 
-              innovation. We combine cutting-edge technology with timeless craftsmanship 
-              to create shoes that help athletes of all levels perform at their best.
+              Pairobin is a footwear brand focused on designing and developing quality 
+              shoes for everyday wear. Our products are designed in-house and produced 
+              through our own and partner manufacturing facilities, with an emphasis on 
+              comfort, durability, and quality control.
             </p>
           </div>
         </div>
@@ -88,35 +58,27 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-4">
-                Our Mission
+                Our Approach
               </p>
               <h2 className="section-title mb-6">
-                Empowering Every Step
+                Designed In-House, Built for Quality
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                At Pairobin, we believe that great footwear can transform the way you move, 
-                train, and live. Our mission is to design and manufacture athletic shoes that 
-                combine performance, comfort, and style – making premium footwear accessible 
-                to athletes and active individuals worldwide.
+                We sell directly to customers through our official website and serve 
+                customers in the United States. Our focus is on creating footwear that 
+                combines comfort, durability, and quality at accessible prices.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                From professional marathoners to weekend joggers, from competitive cyclists 
-                to families exploring the outdoors – we're committed to supporting every 
-                journey with footwear that performs as hard as you do.
+                Every pair of Pairobin shoes goes through quality control processes 
+                to ensure consistency and reliability. We believe in delivering products 
+                that meet our customers' expectations for everyday wear.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button variant="default" size="lg" asChild>
-                  <Link to="/shop">
-                    Shop Collection
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link to="/b2b">
-                    Partner With Us
-                  </Link>
-                </Button>
-              </div>
+              <Button variant="default" size="lg" asChild>
+                <Link to="/shop">
+                  Shop Collection
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
             </div>
             <div className="grid grid-cols-2 gap-6">
               {values.map((value, index) => (
@@ -140,105 +102,40 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
+      {/* What We Offer Section */}
+      <section className="py-16 bg-secondary">
         <div className="container-wide">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">15+</p>
-              <p className="text-primary-foreground/70">Years Experience</p>
-            </div>
-            <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">500+</p>
-              <p className="text-primary-foreground/70">Retail Partners</p>
-            </div>
-            <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">1M+</p>
-              <p className="text-primary-foreground/70">Pairs Sold</p>
-            </div>
-            <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">30+</p>
-              <p className="text-primary-foreground/70">Countries</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container-wide">
-          <div className="text-center mb-12 lg:mb-16">
-            <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-4">
-              Our Journey
-            </p>
-            <h2 className="section-title">
-              Milestones That Define Us
-            </h2>
-          </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block" />
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <div
-                  key={milestone.year}
-                  className={`flex flex-col md:flex-row items-center gap-8 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="bg-background rounded-2xl p-6 shadow-card inline-block">
-                      <p className="font-heading font-black text-4xl text-accent mb-2">
-                        {milestone.year}
-                      </p>
-                      <h3 className="font-heading font-bold text-xl mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative z-10 w-4 h-4 rounded-full bg-accent border-4 border-background shadow-lg hidden md:block" />
-                  <div className="flex-1" />
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="section-title mb-6">What We Offer</h2>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Target className="w-8 h-8 text-accent" />
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Manufacturing Capabilities */}
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <div className="text-center mb-12 lg:mb-16">
-            <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-4">
-              Manufacturing Excellence
-            </p>
-            <h2 className="section-title mb-4">
-              Built to Perform
-            </h2>
-            <p className="section-subtitle mx-auto">
-              Our world-class manufacturing capabilities combine precision engineering 
-              with artisan craftsmanship.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {capabilities.map((capability) => (
-              <div
-                key={capability.title}
-                className="group bg-secondary rounded-2xl p-8 hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-6 transition-colors">
-                  <capability.icon className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="font-heading font-bold text-xl mb-3">
-                  {capability.title}
-                </h3>
-                <p className="text-muted-foreground group-hover:text-primary-foreground/70 transition-colors">
-                  {capability.description}
+                <h3 className="font-heading font-bold text-xl mb-2">In-House Design</h3>
+                <p className="text-muted-foreground">
+                  Products designed by our team with focus on everyday functionality.
                 </p>
               </div>
-            ))}
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Shield className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-2">Quality Control</h3>
+                <p className="text-muted-foreground">
+                  Rigorous quality checks through our manufacturing process.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+                  <Heart className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-2">Direct Sales</h3>
+                <p className="text-muted-foreground">
+                  We sell directly to customers through our official website.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -247,10 +144,10 @@ const About = () => {
       <section className="py-24 bg-accent text-accent-foreground">
         <div className="container-wide text-center">
           <h2 className="font-heading font-black text-4xl md:text-5xl mb-6">
-            Ready to Experience the Difference?
+            Ready to Shop?
           </h2>
           <p className="text-xl opacity-90 max-w-2xl mx-auto mb-10">
-            Join thousands of athletes who trust Pairobin for their performance footwear needs.
+            Browse our collection of quality footwear designed for everyday wear.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="default" size="xl" asChild>

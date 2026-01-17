@@ -17,10 +17,10 @@ const RefundPolicy = () => {
               </p>
             </div>
             <h1 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-              Return & Refund Policy
+              Returns & Refunds Policy
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              We want you to be completely satisfied with your purchase. Here's everything you need to know about returns and refunds.
+              Information about our return and refund process.
             </p>
           </div>
         </div>
@@ -35,21 +35,21 @@ const RefundPolicy = () => {
                 <Clock className="w-7 h-7 text-accent" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-2">30 Days</h3>
-              <p className="text-muted-foreground text-sm">Easy Return/Exchange Window</p>
+              <p className="text-muted-foreground text-sm">Return Window</p>
             </div>
             <div className="bg-background rounded-2xl p-6 text-center">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
                 <Package className="w-7 h-7 text-accent" />
               </div>
-              <h3 className="font-heading font-bold text-xl mb-2">New Condition</h3>
-              <p className="text-muted-foreground text-sm">Items Must Be Unworn & Undamaged</p>
+              <h3 className="font-heading font-bold text-xl mb-2">Original Condition</h3>
+              <p className="text-muted-foreground text-sm">Items Must Be Unused</p>
             </div>
             <div className="bg-background rounded-2xl p-6 text-center">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
                 <Mail className="w-7 h-7 text-accent" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-2">Quick Processing</h3>
-              <p className="text-muted-foreground text-sm">Refunds Within 1-2 Business Days</p>
+              <p className="text-muted-foreground text-sm">Refunds Processed Promptly</p>
             </div>
           </div>
         </div>
@@ -59,122 +59,89 @@ const RefundPolicy = () => {
       <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="max-w-4xl mx-auto">
+            
+            {/* Main Policy */}
             <div className="bg-accent/10 rounded-2xl p-8 mb-12">
-              <h2 className="font-heading font-bold text-2xl mb-4">30 Days Easy Return/Exchange</h2>
-              <p className="text-muted-foreground">
-                If you are not 100% satisfied with the items you received, we gladly accept returns and exchanges within 30 days of receipt. Please make sure items are in new condition. Note that overdue requests may not be accepted.
+              <h2 className="font-heading font-bold text-2xl mb-4">Our Return Policy</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                We accept returns within 30 days of delivery. Items must be unused, in original 
+                condition, and returned in original packaging. Once the returned item is received 
+                and inspected, refunds will be processed to the original payment method within a 
+                reasonable timeframe. Return shipping costs may apply unless the item is defective 
+                or incorrect.
               </p>
             </div>
 
-            <div className="space-y-12">
-              <div>
-                <h2 className="font-heading font-bold text-2xl mb-6">Am I Allowed to Return or Exchange?</h2>
-                <p className="text-muted-foreground mb-4">
-                  You can return or exchange within 30 days of receipt for most items in new condition.
-                </p>
-                <p className="text-muted-foreground">
-                  If you want to replace the goods quickly, you can place a new order at the same time. We will refund the original order after we receive the returned items.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-heading font-bold text-2xl mb-6">Return & Exchange Requirements</h2>
-                <div className="space-y-4">
-                  {[
-                    "You have 30 days from receipt to decide if an item is right for you",
-                    "Return items must be in new condition: unworn, unwashed, unstained, and undamaged",
-                    "Please keep the original packaging with PAIROBIN branding",
-                    "Buyer is responsible for return shipping costs",
-                    "PAIROBIN is not responsible for lost or damaged return packages",
-                    "Once your return is received, please allow up to 1 week for processing"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 bg-secondary rounded-xl p-4">
-                      <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                        <span className="text-accent font-bold text-sm">{index + 1}</span>
-                      </div>
-                      <p className="text-muted-foreground">{item}</p>
+            {/* Requirements */}
+            <div className="mb-12">
+              <h2 className="font-heading font-bold text-2xl mb-6">Return Requirements</h2>
+              <div className="space-y-4">
+                {[
+                  "Returns must be initiated within 30 days of delivery",
+                  "Items must be unused and in original condition",
+                  "Items must be returned in original packaging",
+                  "Return shipping costs may apply (unless item is defective or incorrect)",
+                  "Refunds are processed to the original payment method"
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-4 bg-secondary rounded-xl p-4">
+                    <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                      <CheckCircle className="w-5 h-5 text-accent" />
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="font-heading font-bold text-2xl mb-6">Refund Timeline</h2>
-                <div className="bg-secondary rounded-2xl p-8">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="font-heading font-bold text-lg mb-3">Refund Processing</h3>
-                      <p className="text-muted-foreground">
-                        Refunds are resolved within <strong className="text-foreground">1-2 business days</strong> after we receive and inspect your return.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-lg mb-3">Return Shipping</h3>
-                      <p className="text-muted-foreground">
-                        Returns are processed within <strong className="text-foreground">1-14 working days</strong> without any handling fees. Buyer bears the return shipping cost.
-                      </p>
-                    </div>
+                    <p className="text-foreground">{item}</p>
                   </div>
-                </div>
+                ))}
               </div>
+            </div>
 
-              <div>
-                <h2 className="font-heading font-bold text-2xl mb-6">How to Initiate a Return</h2>
-                <div className="bg-primary text-primary-foreground rounded-2xl p-8">
-                  <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                      <Mail className="w-7 h-7 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-xl mb-3">Contact Us to Start Your Return</h3>
-                      <p className="text-primary-foreground/80 mb-4">
-                        Email us at <a href="mailto:info@pairobin.com" className="text-accent hover:underline font-semibold">info@pairobin.com</a> with your order number and reason for return. We'll provide you with return instructions and the shipping address.
-                      </p>
-                      <Button variant="accent" size="default" asChild>
-                        <a href="mailto:info@pairobin.com">Start Return Request</a>
-                      </Button>
-                    </div>
+            {/* Refund Timeline */}
+            <div className="mb-12">
+              <h2 className="font-heading font-bold text-2xl mb-6">Refund Process</h2>
+              <div className="bg-secondary rounded-2xl p-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="font-heading font-bold text-lg mb-3">Inspection</h3>
+                    <p className="text-muted-foreground">
+                      Once we receive your return, we will inspect the item to ensure it meets 
+                      our return requirements.
+                    </p>
                   </div>
-                </div>
-              </div>
-
-              <div>
-                <h2 className="font-heading font-bold text-2xl mb-6">Important Notes</h2>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
-                    <CheckCircle className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-1">Wrong Address</h4>
-                      <p className="text-sm text-muted-foreground">
-                        If you provided the wrong address, please contact us immediately before we ship your order. PAIROBIN is not responsible for wrong addresses provided by customers.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
-                    <CheckCircle className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-1">Lost or Damaged Packages</h4>
-                      <p className="text-sm text-muted-foreground">
-                        PAIROBIN is not responsible for packages lost or damaged during return shipping. We recommend using tracked shipping methods.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
-                    <CheckCircle className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-1">Original Packaging</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Please keep the original plastic bag with PAIROBIN LOGO and seal the bag when returning items.
-                      </p>
-                    </div>
+                  <div>
+                    <h3 className="font-heading font-bold text-lg mb-3">Refund Processing</h3>
+                    <p className="text-muted-foreground">
+                      After inspection, refunds will be processed to your original payment 
+                      method within a reasonable timeframe.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-16 text-center">
+            {/* How to Initiate */}
+            <div className="mb-12">
+              <h2 className="font-heading font-bold text-2xl mb-6">How to Initiate a Return</h2>
+              <div className="bg-primary text-primary-foreground rounded-2xl p-8">
+                <div className="flex items-start gap-6">
+                  <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                    <Mail className="w-7 h-7 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold text-xl mb-3">Contact Us to Start Your Return</h3>
+                    <p className="text-primary-foreground/80 mb-4">
+                      Email us at <a href="mailto:support@pairobin.com" className="text-accent hover:underline font-semibold">support@pairobin.com</a> with 
+                      your order number and reason for return. We'll provide you with return instructions.
+                    </p>
+                    <Button variant="accent" size="default" asChild>
+                      <a href="mailto:support@pairobin.com">Start Return Request</a>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div className="text-center">
               <p className="text-lg text-muted-foreground mb-6">
-                All of our products are made to perfection. We want to ensure your satisfaction!
+                Have questions about returns or refunds?
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="default" size="lg" asChild>
@@ -185,6 +152,7 @@ const RefundPolicy = () => {
                 </Button>
               </div>
             </div>
+
           </div>
         </div>
       </section>

@@ -1,54 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-
-const paymentMethods = [
-  { name: "Visa", icon: "💳" },
-  { name: "Mastercard", icon: "💳" },
-  { name: "Maestro", icon: "💳" },
-  { name: "American Express", icon: "💳" },
-  { name: "Diners Club", icon: "💳" },
-  { name: "Discover", icon: "💳" },
-  { name: "JCB", icon: "💳" },
-];
+import pairobinLogo from "@/assets/pairobin-logo.png";
 
 const footerLinks = {
   shop: [
-    { name: "Running Shoes", href: "/shop/running" },
-    { name: "Walking Shoes", href: "/shop/walking" },
-    { name: "Cycling Shoes", href: "/shop/cycling" },
-    { name: "Kids Active", href: "/shop/kids" },
-    { name: "Outdoor Footwear", href: "/shop/outdoor" },
     { name: "All Products", href: "/shop" },
   ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Manufacturing", href: "/manufacturing" },
-    { name: "B2B Wholesale", href: "/b2b" },
-    { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/careers" },
+    { name: "Contact Us", href: "/contact" },
   ],
   support: [
-    { name: "FAQ", href: "/faq" },
     { name: "Shipping Policy", href: "/shipping" },
-    { name: "Returns & Exchanges", href: "/returns" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Returns & Refunds", href: "/returns" },
+    { name: "FAQ", href: "/faq" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Refund Policy", href: "/returns" },
   ],
 };
-
-const socialLinks = [
-  { name: "Facebook", icon: Facebook, href: "#" },
-  { name: "Instagram", icon: Instagram, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
-  { name: "YouTube", icon: Youtube, href: "#" },
-];
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -66,7 +40,6 @@ export function Footer() {
     }
     
     setIsSubmitting(true);
-    // Simulate submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     toast({
       title: "Successfully subscribed!",
@@ -83,7 +56,7 @@ export function Footer() {
         <div className="container-wide py-12 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <h3 className="font-heading text-2xl font-bold italic mb-2">
+              <h3 className="font-heading text-2xl font-bold mb-2">
                 Newsletter Sign Up
               </h3>
               <p className="text-primary-foreground/70 max-w-md">
@@ -117,25 +90,15 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <span className="font-heading font-black text-3xl tracking-tight">
-                PAIROBIN
-              </span>
+              <img 
+                src={pairobinLogo} 
+                alt="Pairobin" 
+                className="h-10 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
-              Engineered for performance. Designed for life. Premium athletic footwear for runners, walkers, cyclists, and active families worldwide.
+              Pairobin is a footwear brand focused on designing and developing quality shoes for everyday wear. We sell directly to customers in the United States.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
-                  aria-label={social.name}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Shop Links */}
@@ -203,17 +166,36 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>support@pairobin.com</span>
+                <a href="mailto:support@pairobin.com" className="hover:text-accent transition-colors">
+                  support@pairobin.com
+                </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <a href="tel:+8618060061837" className="hover:text-accent transition-colors">
+                  +86 180 6006 1837
+                </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
-                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>Global Headquarters<br />Los Angeles, CA</span>
+                <Clock className="w-4 h-4 mt-0.5 shrink-0" />
+                <span>Mon-Fri: 9:00 – 18:00</span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Legal Links Row */}
+        <div className="mt-8 pt-8 border-t border-primary-foreground/10">
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
+            {footerLinks.legal.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-primary-foreground/70 hover:text-accent transition-colors text-sm"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -223,7 +205,7 @@ export function Footer() {
         <div className="container-wide py-8">
           <div className="flex flex-col items-center gap-6">
             <p className="text-sm text-primary-foreground/70 text-center">
-              © {new Date().getFullYear()} <span className="font-bold text-primary-foreground">Pairobin,</span> All Rights Reserved. Designed By Jibril Soft
+              © 2026 <span className="font-bold text-primary-foreground">Pairobin.</span> All Rights Reserved.
             </p>
             
             {/* Payment Methods */}
@@ -239,28 +221,13 @@ export function Footer() {
                   <div className="w-5 h-5 rounded-full bg-[#F79E1B] -ml-2"></div>
                 </div>
               </div>
-              {/* Maestro */}
-              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
-                <div className="flex">
-                  <div className="w-5 h-5 rounded-full bg-[#0066CC]"></div>
-                  <div className="w-5 h-5 rounded-full bg-[#CC0000] -ml-2"></div>
-                </div>
-              </div>
               {/* Amex */}
               <div className="bg-[#006FCF] rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
                 <span className="text-white font-bold text-xs">AMEX</span>
               </div>
-              {/* Diners Club */}
-              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
-                <span className="text-[#004A97] font-bold text-lg">D</span>
-              </div>
               {/* Discover */}
               <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
                 <span className="text-[#FF6600] font-bold text-xs">DISCOVER</span>
-              </div>
-              {/* JCB */}
-              <div className="bg-white rounded-md px-3 py-2 flex items-center justify-center min-w-[60px]">
-                <span className="text-[#0066CC] font-bold text-sm">JCB</span>
               </div>
             </div>
           </div>
