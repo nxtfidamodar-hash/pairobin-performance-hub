@@ -28,12 +28,38 @@
       "name": "Pairobin",
       "url": "https://pairobin.com",
       "logo": "https://pairobin.com/logo.png",
-      "description": "Premium athletic footwear for running, walking, cycling, and active lifestyles.",
+      "description": "Premium athletic footwear for running, walking, cycling, and active lifestyles. Shoes designed in the USA.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "support@pairobin.com",
+        "availableLanguage": "English"
+      },
       "sameAs": [
         "https://facebook.com/pairobin",
         "https://instagram.com/pairobin",
         "https://twitter.com/pairobin"
       ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Pairobin",
+      "url": "https://pairobin.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://pairobin.com/shop?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
   </head>
