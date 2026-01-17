@@ -117,8 +117,8 @@ const PrivacyPolicy = () => {
               <h3 className="font-heading font-bold text-xl mb-4 mt-0">Contact Us</h3>
               <p className="text-muted-foreground mb-0">
                 If you have any questions about this Privacy Policy, please contact us at{" "}
-                <a href="mailto:support@pairobin.com" className="text-accent hover:underline">
-                  support@pairobin.com
+                <a href="mailto:info@pairobin.com" className="text-accent hover:underline">
+                  info@pairobin.com
                 </a>
               </p>
             </div>

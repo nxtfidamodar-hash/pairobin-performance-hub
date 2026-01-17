@@ -4,6 +4,8 @@ import {
   CategoriesSection,
   FeaturedProducts,
   TrustBadges,
+  B2BSection,
+  TestimonialsSection,
 } from "@/components/home";
 
 const Index = () => {
@@ -13,6 +15,8 @@ const Index = () => {
       <TrustBadges />
       <CategoriesSection />
       <FeaturedProducts />
+      <TestimonialsSection />
+      <B2BSection />
     </Layout>
   );
 };

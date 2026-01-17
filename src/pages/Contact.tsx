@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, MessageCircle, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
@@ -9,22 +9,29 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email Us",
-    description: "We'll respond as soon as possible",
+    description: "We'll respond within 24 hours",
     value: "support@pairobin.com",
     link: "mailto:support@pairobin.com",
   },
   {
     icon: Phone,
-    title: "Phone & WhatsApp",
-    description: "Available during business hours",
-    value: "+86 180 6006 1837",
-    link: "https://wa.me/8618060061837",
+    title: "Call Us",
+    description: "Mon-Fri from 8am to 6pm EST",
+    value: "+1 (555) 123-4567",
+    link: "tel:+15551234567",
   },
   {
-    icon: Clock,
-    title: "Business Hours",
-    description: "Monday to Friday",
-    value: "9:00 – 18:00",
+    icon: MessageCircle,
+    title: "WhatsApp",
+    description: "Quick response guaranteed",
+    value: "+1 (555) 987-6543",
+    link: "https://wa.me/15559876543",
+  },
+  {
+    icon: MapPin,
+    title: "Visit Us",
+    description: "Our global headquarters",
+    value: "Los Angeles, CA, USA",
     link: "#",
   },
 ];
@@ -60,7 +67,8 @@ const Contact = () => {
               We're Here to Help
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              Have questions or need support? Our team is here to help.
+              Have a question about your order, our products, or want to become a partner? 
+              We'd love to hear from you.
             </p>
           </div>
         </div>
@@ -69,7 +77,7 @@ const Contact = () => {
       {/* Contact Methods */}
       <section className="py-16 bg-background border-b border-border">
         <div className="container-wide">
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method) => (
               <a
                 key={method.title}
@@ -94,7 +102,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Business Address & Contact Form */}
+      {/* Contact Form */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-16">
@@ -142,7 +150,7 @@ const Contact = () => {
                       <option value="order">Order Inquiry</option>
                       <option value="product">Product Question</option>
                       <option value="return">Returns & Exchanges</option>
-                      <option value="shipping">Shipping Question</option>
+                      <option value="wholesale">Wholesale/B2B</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
@@ -175,61 +183,65 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Business Address Sidebar */}
+            {/* FAQ Sidebar */}
             <div>
               <div className="bg-secondary rounded-3xl p-8 md:p-10 sticky top-32">
                 <h3 className="font-heading font-bold text-2xl mb-6">
-                  Business Correspondence Address
+                  Frequently Asked Questions
                 </h3>
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-5 h-5 text-accent mt-1 shrink-0" />
-                    <div>
-                      <p className="text-foreground">
-                        ROOM 122, 12/F, TUNG LEE INDUSTRIAL BUILDING<br />
-                        9 LAI YIP STREET, KWUN TONG<br />
-                        KOWLOON, HONG KONG
-                      </p>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">How long does shipping take?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Standard shipping takes 5-7 business days within the US. Express shipping (2-3 days) is available at checkout.
+                    </p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <Mail className="w-5 h-5 text-accent mt-1 shrink-0" />
-                    <div>
-                      <p className="font-semibold mb-1">Customer Support Email</p>
-                      <a href="mailto:support@pairobin.com" className="text-accent hover:underline">
-                        support@pairobin.com
-                      </a>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">What's your return policy?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      We offer 30-day hassle-free returns. Items must be unworn and in original packaging.
+                    </p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <Phone className="w-5 h-5 text-accent mt-1 shrink-0" />
-                    <div>
-                      <p className="font-semibold mb-1">Phone & WhatsApp</p>
-                      <a href="https://wa.me/8618060061837" className="text-accent hover:underline">
-                        +86 180 6006 1837
-                      </a>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Do you ship internationally?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Yes! We ship to 30+ countries. International shipping takes 7-14 business days.
+                    </p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <Clock className="w-5 h-5 text-accent mt-1 shrink-0" />
-                    <div>
-                      <p className="font-semibold mb-1">Business Hours</p>
-                      <p className="text-muted-foreground">
-                        Monday to Friday: 9:00 – 18:00<br />
-                        Saturday & Sunday: Closed
-                      </p>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">How can I track my order?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      You'll receive a tracking number via email once your order ships. You can also track orders in your account.
+                    </p>
                   </div>
                 </div>
                 <div className="mt-8 pt-6 border-t border-border">
                   <Link to="/faq" className="text-accent font-semibold hover:underline inline-flex items-center">
-                    View FAQs
+                    View All FAQs
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* B2B CTA */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container-wide text-center">
+          <h2 className="font-heading font-bold text-3xl mb-4">
+            Looking for Wholesale or B2B Solutions?
+          </h2>
+          <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
+            Our dedicated B2B team is ready to help with bulk orders, custom manufacturing, and partnership opportunities.
+          </p>
+          <Button variant="accent" size="lg" asChild>
+            <Link to="/b2b">
+              Visit B2B Page
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+          </Button>
         </div>
       </section>
     </Layout>

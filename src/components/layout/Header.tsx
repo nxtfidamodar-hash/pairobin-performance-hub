@@ -3,14 +3,15 @@ import { useState } from "react";
 import { Menu, X, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/shop/CartDrawer";
-import pairobinLogo from "@/assets/pairobin-logo.png";
 
 const navigation = [
   { name: "Shop", href: "/shop" },
-  { name: "About Us", href: "/about" },
-  { name: "Contact Us", href: "/contact" },
-  { name: "Shipping", href: "/shipping" },
-  { name: "Returns", href: "/returns" },
+  { name: "Running", href: "/shop/running" },
+  { name: "Walking", href: "/shop/walking" },
+  { name: "Cycling", href: "/shop/cycling" },
+  { name: "Kids", href: "/shop/kids" },
+  { name: "B2B", href: "/b2b" },
+  { name: "About", href: "/about" },
 ];
 
 export function Header() {
@@ -21,19 +22,17 @@ export function Header() {
       {/* Top announcement bar */}
       <div className="bg-primary text-primary-foreground py-2">
         <div className="container-wide text-center text-xs font-medium tracking-wide">
-          FREE SHIPPING TO THE UNITED STATES ON ALL ORDERS
+          FREE SHIPPING ON ORDERS OVER $99 | GLOBAL DELIVERY AVAILABLE
         </div>
       </div>
 
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img 
-              src={pairobinLogo} 
-              alt="Pairobin" 
-              className="h-8 lg:h-10 w-auto"
-            />
+          <Link to="/" className="flex items-center gap-2">
+            <span className="font-heading font-black text-2xl lg:text-3xl text-primary tracking-tight">
+              PAIROBIN
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -51,6 +50,12 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-4">
+            <button className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary transition-colors">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary transition-colors">
+              <User className="w-5 h-5" />
+            </button>
             <CartDrawer />
 
             {/* Mobile Menu Button */}
@@ -78,6 +83,16 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            <div className="pt-4 border-t border-border flex gap-4">
+              <Button variant="outline" size="sm" className="flex-1">
+                <Search className="w-4 h-4 mr-2" />
+                Search
+              </Button>
+              <Button variant="outline" size="sm" className="flex-1">
+                <User className="w-4 h-4 mr-2" />
+                Account
+              </Button>
+            </div>
           </nav>
         </div>
       )}
