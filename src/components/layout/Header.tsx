@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/shop/CartDrawer";
+import pairobinLogo from "@/assets/pairobin-logo.png";
 
 const navigation = [
   { name: "Shop", href: "/shop" },
@@ -29,10 +30,12 @@ export function Header() {
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-heading font-black text-2xl lg:text-3xl text-primary tracking-tight">
-              PAIROBIN
-            </span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={pairobinLogo} 
+              alt="Pairobin" 
+              className="h-10 lg:h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

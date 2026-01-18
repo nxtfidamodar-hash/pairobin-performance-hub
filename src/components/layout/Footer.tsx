@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import pairobinLogo from "@/assets/pairobin-logo.png";
 
 const paymentMethods = [
   { name: "Visa", icon: "💳" },
@@ -117,9 +118,11 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <span className="font-heading font-black text-3xl tracking-tight">
-                PAIROBIN
-              </span>
+              <img 
+                src={pairobinLogo} 
+                alt="Pairobin" 
+                className="h-10 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
               Engineered for performance. Designed for life. Premium athletic footwear for runners, walkers, cyclists, and active families worldwide.
