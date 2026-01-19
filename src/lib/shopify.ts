@@ -67,7 +67,7 @@ export const STOREFRONT_PRODUCTS_QUERY = `
               currencyCode
             }
           }
-          images(first: 5) {
+          images(first: 10) {
             edges {
               node {
                 url
