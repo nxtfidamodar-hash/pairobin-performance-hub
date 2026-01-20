@@ -10,28 +10,28 @@ const contactMethods = [
     icon: Mail,
     title: "Email Us",
     description: "We'll respond within 24 hours",
-    value: "support@pairobin.com",
-    link: "mailto:support@pairobin.com",
+    value: "info@pairobin.com",
+    link: "mailto:info@pairobin.com",
   },
   {
     icon: Phone,
     title: "Call Us",
-    description: "Mon-Fri from 8am to 6pm EST",
-    value: "+1 (555) 123-4567",
-    link: "tel:+15551234567",
+    description: "Mon-Fri 9:00 AM – 6:00 PM",
+    value: "+86 180 6006 1837",
+    link: "tel:+8618060061837",
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
     description: "Quick response guaranteed",
-    value: "+1 (555) 987-6543",
-    link: "https://wa.me/15559876543",
+    value: "+86 180 6006 1837",
+    link: "https://wa.me/8618060061837",
   },
   {
     icon: MapPin,
-    title: "Visit Us",
-    description: "Our global headquarters",
-    value: "Los Angeles, CA, USA",
+    title: "Business Address",
+    description: "Correspondence address",
+    value: "ROOM 122, 12/F, TUNG LEE INDUSTRIAL BUILDING, KOWLOON, HK",
     link: "#",
   },
 ];
@@ -193,25 +193,25 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold mb-2">How long does shipping take?</h4>
                     <p className="text-sm text-muted-foreground">
-                      Standard shipping takes 5-7 business days within the US. Express shipping (2-3 days) is available at checkout.
+                      Orders are processed within 2–3 business days. Delivery times vary based on destination and shipping method selected at checkout.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2">What's your return policy?</h4>
                     <p className="text-sm text-muted-foreground">
-                      We offer 30-day hassle-free returns. Items must be unworn and in original packaging.
+                      We accept returns within 30 days of delivery. Items must be unused, in original condition, and in original packaging.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Do you ship internationally?</h4>
+                    <h4 className="font-semibold mb-2">Where do you ship?</h4>
                     <p className="text-sm text-muted-foreground">
-                      Yes! We ship to 30+ countries. International shipping takes 7-14 business days.
+                      We currently ship to customers in the United States. Shipping costs are calculated at checkout.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">How can I track my order?</h4>
+                    <h4 className="font-semibold mb-2">How can I contact support?</h4>
                     <p className="text-sm text-muted-foreground">
-                      You'll receive a tracking number via email once your order ships. You can also track orders in your account.
+                      Email us at info@pairobin.com or call/WhatsApp +86 180 6006 1837. Business hours: Mon–Fri, 9:00 AM – 6:00 PM.
                     </p>
                   </div>
                 </div>

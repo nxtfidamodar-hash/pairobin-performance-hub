@@ -1,16 +1,7 @@
 import { Layout } from "@/components/layout";
-import { Truck, Globe, Package, AlertCircle, Clock } from "lucide-react";
-
-const shippingTimes = [
-  { region: "United States", time: "2-6 business days", icon: "🇺🇸" },
-  { region: "Canada", time: "6-10 business days", icon: "🇨🇦" },
-  { region: "United Kingdom", time: "4-8 business days", icon: "🇬🇧" },
-  { region: "European Union", time: "6-10 business days", icon: "🇪🇺" },
-  { region: "Australia", time: "6-9 business days", icon: "🇦🇺" },
-  { region: "Mexico, Central/South America", time: "14 business days", icon: "🌎" },
-  { region: "Asian Countries", time: "14 business days", icon: "🌏" },
-  { region: "Other Countries", time: "14-24 business days", icon: "🌍" },
-];
+import { Truck, Package, AlertCircle, Clock, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const ShippingPolicy = () => {
   return (
@@ -26,10 +17,10 @@ const ShippingPolicy = () => {
               </p>
             </div>
             <h1 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-              Shipping & Delivery
+              Shipping Policy
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              We deliver to hundreds of customers across the world every day, and we strive to provide you with services of the highest level.
+              We currently ship to customers in the United States. Learn about our shipping process and delivery times.
             </p>
           </div>
         </div>
@@ -43,57 +34,64 @@ const ShippingPolicy = () => {
               <Clock className="w-6 h-6" />
               <span className="font-heading font-bold text-lg">Processing Time:</span>
             </div>
-            <span className="text-lg">6-10 Days</span>
+            <span className="text-lg">2–3 Business Days</span>
             <span className="hidden md:block">|</span>
             <span className="text-sm opacity-90">
-              New collections may take a bit longer due to warehouse updates
+              After payment confirmation
             </span>
           </div>
         </div>
       </section>
 
-      {/* Shipping Times Grid */}
+      {/* Main Content */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl mb-4">Shipping Times by Region</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our goal is to offer you the best shipping options, no matter where you live. Shipping times vary depending on your location.
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {shippingTimes.map((item) => (
-              <div key={item.region} className="bg-secondary rounded-2xl p-6 text-center hover:shadow-card transition-shadow">
-                <span className="text-4xl mb-4 block">{item.icon}</span>
-                <h3 className="font-heading font-bold text-lg mb-2">{item.region}</h3>
-                <p className="text-accent font-semibold">{item.time}</p>
+          <div className="max-w-4xl mx-auto">
+            {/* Shipping Overview */}
+            <div className="bg-secondary rounded-2xl p-8 mb-12">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                  <Truck className="w-7 h-7 text-accent" />
+                </div>
+                <div>
+                  <h2 className="font-heading font-bold text-2xl mb-4">Shipping to the United States</h2>
+                  <p className="text-muted-foreground mb-4">
+                    We currently ship to customers in the United States. Orders are processed within 2–3 business days after payment confirmation.
+                  </p>
+                  <p className="text-muted-foreground">
+                    Delivery times vary based on destination and the shipping method selected at checkout. Shipping costs are calculated and displayed during checkout before payment is completed.
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div className="mt-12 bg-accent/10 rounded-2xl p-6 max-w-3xl mx-auto">
-            <div className="flex items-start gap-4">
-              <Package className="w-6 h-6 text-accent shrink-0 mt-1" />
-              <div>
-                <h3 className="font-heading font-bold text-lg mb-2">📦 USA & Canada Special Notice</h3>
-                <p className="text-muted-foreground">
-                  Delivery to USA & Canada is typically 7–15 business days. This is a temporary adjustment, and we're doing everything possible to speed up processing and delivery while keeping our quality high. Thank you for your patience!
+            {/* Key Information Cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="bg-background border border-border rounded-2xl p-6">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                  <Clock className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-lg mb-2">Processing Time</h3>
+                <p className="text-muted-foreground text-sm">
+                  Orders are processed within 2–3 business days after payment confirmation. You will receive a confirmation email once your order ships.
+                </p>
+              </div>
+              <div className="bg-background border border-border rounded-2xl p-6">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                  <Package className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-lg mb-2">Delivery Times</h3>
+                <p className="text-muted-foreground text-sm">
+                  Delivery times vary based on your location and the shipping method you select at checkout. Tracking information will be provided via email.
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Important Information */}
-      <section className="section-padding bg-secondary">
-        <div className="container-wide">
-          <div className="max-w-4xl mx-auto">
+            {/* Important Information */}
             <h2 className="font-heading font-bold text-3xl mb-8 text-center">Important Information</h2>
             
             <div className="space-y-6">
-              <div className="bg-background rounded-2xl p-6">
+              <div className="bg-secondary rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <AlertCircle className="w-5 h-5 text-accent" />
@@ -101,13 +99,13 @@ const ShippingPolicy = () => {
                   <div>
                     <h3 className="font-heading font-bold text-lg mb-2">Wrong Address on Order</h3>
                     <p className="text-muted-foreground">
-                      Our store is not responsible for incorrectly filled information about the address of the recipient. In such cases, please contact us as soon as possible. We do our best to avoid such situations, but if you notice an error, reach out to us immediately.
+                      Our store is not responsible for incorrectly filled information about the address of the recipient. If you notice an error in your shipping address, please contact us immediately at info@pairobin.com.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-background rounded-2xl p-6">
+              <div className="bg-secondary rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <Package className="w-5 h-5 text-accent" />
@@ -115,35 +113,21 @@ const ShippingPolicy = () => {
                   <div>
                     <h3 className="font-heading font-bold text-lg mb-2">Package Marked as Delivered But Not Received</h3>
                     <p className="text-muted-foreground">
-                      In cases when you see information on the carrier's website that your order has already been delivered, but you have not received it, please contact the local post office. You can do this via email or visit the post office. Unfortunately, we cannot influence the delivery process once it's with the carrier.
+                      If the carrier's website shows your order as delivered but you haven't received it, please contact your local post office. Unfortunately, we cannot influence the delivery process once it's with the carrier.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-background rounded-2xl p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                    <Globe className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg mb-2">Customs Fees & Import Duties</h3>
-                    <p className="text-muted-foreground">
-                      We are not responsible for any duties, taxes, or customs fees under any circumstances. These charges are determined by your country's customs office and are the responsibility of the customer. Please check your local customs regulations before ordering.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-background rounded-2xl p-6">
+              <div className="bg-secondary rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <Truck className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-lg mb-2">Refused or Undeliverable Packages</h3>
+                    <h3 className="font-heading font-bold text-lg mb-2">Shipping Costs</h3>
                     <p className="text-muted-foreground">
-                      If you refuse to accept a parcel, or the local carrier refuses to deliver a parcel, we have the right to return the package and not refund its cost. Please ensure someone is available to receive your package.
+                      Shipping costs are calculated based on your location and selected shipping method. All costs are displayed during checkout before you complete your payment.
                     </p>
                   </div>
                 </div>
@@ -156,9 +140,9 @@ const ShippingPolicy = () => {
       {/* Free Shipping Banner */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container-wide text-center">
-          <h2 className="font-heading font-bold text-3xl mb-4">Free Shipping on Orders Over $100</h2>
+          <h2 className="font-heading font-bold text-3xl mb-4">Free Shipping on Orders Over $99</h2>
           <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-            Enjoy free standard shipping on all orders over $100 within the United States. International shipping rates are calculated at checkout.
+            Enjoy free standard shipping on all orders over $99 within the United States.
           </p>
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center gap-3">
@@ -173,8 +157,8 @@ const ShippingPolicy = () => {
               <span>Fast Delivery</span>
             </div>
             <div className="flex items-center gap-3">
-              <Globe className="w-8 h-8" />
-              <span>Global Shipping</span>
+              <Package className="w-8 h-8" />
+              <span>Quality Packaging</span>
             </div>
           </div>
         </div>
@@ -187,12 +171,25 @@ const ShippingPolicy = () => {
           <p className="text-muted-foreground mb-6">
             Contact our customer support team for any shipping-related inquiries.
           </p>
-          <a 
-            href="mailto:info@pairobin.com" 
-            className="inline-flex items-center gap-2 text-accent hover:underline font-semibold text-lg"
-          >
-            info@pairobin.com
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+            <a 
+              href="mailto:info@pairobin.com" 
+              className="inline-flex items-center gap-2 text-accent hover:underline font-semibold"
+            >
+              <Mail className="w-5 h-5" />
+              info@pairobin.com
+            </a>
+            <a 
+              href="tel:+8618060061837" 
+              className="inline-flex items-center gap-2 text-accent hover:underline font-semibold"
+            >
+              <Phone className="w-5 h-5" />
+              +86 180 6006 1837
+            </a>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Business Hours: Monday – Friday, 9:00 AM – 6:00 PM
+          </p>
         </div>
       </section>
     </Layout>

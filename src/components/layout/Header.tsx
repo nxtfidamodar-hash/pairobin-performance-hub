@@ -34,7 +34,7 @@ export function Header() {
             <img 
               src={pairobinLogo} 
               alt="Pairobin" 
-              className="h-10 lg:h-12 w-auto object-contain"
+              className="h-12 lg:h-14 w-auto object-contain"
             />
           </Link>
 
