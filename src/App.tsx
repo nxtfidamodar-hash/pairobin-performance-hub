@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
@@ -20,29 +21,39 @@ import CookieBanner from "./components/CookieBanner";
 
 const queryClient = new QueryClient();
 
+function AppContent() {
+  useCartSync();
+  
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:category" element={<Shop />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/b2b" element={<B2B />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/manufacturing" element={<Manufacturing />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/returns" element={<RefundPolicy />} />
+        <Route path="/shipping" element={<ShippingPolicy />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <CookieBanner />
+    </>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/shop/:category" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/b2b" element={<B2B />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/manufacturing" element={<Manufacturing />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-          <Route path="/returns" element={<RefundPolicy />} />
-          <Route path="/shipping" element={<ShippingPolicy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <CookieBanner />
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
