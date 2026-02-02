@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import pairobinLogo from "@/assets/pairobin-logo.png";
 
 const paymentMethods = [
   { name: "Visa", icon: "💳" },
@@ -21,6 +20,7 @@ const footerLinks = {
     { name: "Walking Shoes", href: "/shop/walking" },
     { name: "Cycling Shoes", href: "/shop/cycling" },
     { name: "Kids Active", href: "/shop/kids" },
+    { name: "Outdoor Footwear", href: "/shop/outdoor" },
     { name: "All Products", href: "/shop" },
   ],
   company: [
@@ -28,16 +28,18 @@ const footerLinks = {
     { name: "Manufacturing", href: "/manufacturing" },
     { name: "B2B Wholesale", href: "/b2b" },
     { name: "Contact", href: "/contact" },
+    { name: "Careers", href: "/careers" },
   ],
   support: [
     { name: "FAQ", href: "/faq" },
     { name: "Shipping Policy", href: "/shipping" },
-    { name: "Returns & Refunds", href: "/returns" },
+    { name: "Returns & Exchanges", href: "/returns" },
     { name: "Contact Us", href: "/contact" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms & Conditions", href: "/terms" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "Refund Policy", href: "/returns" },
   ],
 };
 
@@ -115,14 +117,12 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <img 
-                src={pairobinLogo} 
-                alt="Pairobin" 
-                className="h-12 w-auto object-contain brightness-0 invert"
-              />
+              <span className="font-heading font-black text-3xl tracking-tight">
+                PAIROBIN
+              </span>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
-              Pairobin is a footwear brand focused on designing and developing quality shoes for everyday wear. We currently serve customers in the United States.
+              Engineered for performance. Designed for life. Premium athletic footwear for runners, walkers, cyclists, and active families worldwide.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -203,20 +203,17 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-                <a href="mailto:info@pairobin.com" className="hover:text-accent transition-colors">info@pairobin.com</a>
+                <span>support@pairobin.com</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                <a href="tel:+8618060061837" className="hover:text-accent transition-colors">+86 180 6006 1837</a>
+                <span>+1 (555) 123-4567</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>ROOM 122, 12/F, TUNG LEE INDUSTRIAL BUILDING<br />9 LAI YIP STREET, KWUN TONG<br />KOWLOON, HONG KONG</span>
+                <span>Global Headquarters<br />Los Angeles, CA</span>
               </li>
             </ul>
-            <p className="text-xs text-primary-foreground/50 mt-4">
-              Mon – Fri: 9:00 AM – 6:00 PM
-            </p>
           </div>
         </div>
       </div>
@@ -225,10 +222,9 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="container-wide py-8">
           <div className="flex flex-col items-center gap-6">
-            <div className="text-sm text-primary-foreground/70 text-center">
-              <p>© {new Date().getFullYear()} <span className="font-bold text-primary-foreground">Pairobin.</span> All Rights Reserved.</p>
-              <p className="mt-1">Operated by 石狮市派罗宾运动科技有限公司 (Pairobin)</p>
-            </div>
+            <p className="text-sm text-primary-foreground/70 text-center">
+              © {new Date().getFullYear()} <span className="font-bold text-primary-foreground">Pairobin,</span> All Rights Reserved. Designed By Jibril Soft
+            </p>
             
             {/* Payment Methods */}
             <div className="flex flex-wrap items-center justify-center gap-3">

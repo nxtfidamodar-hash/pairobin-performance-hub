@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Search, User } from "lucide-react";
+import { Menu, X, ShoppingBag, Search, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CartDrawer } from "@/components/shop/CartDrawer";
-import pairobinLogo from "@/assets/pairobin-logo.png";
 
 const navigation = [
   { name: "Shop", href: "/shop" },
@@ -30,12 +28,10 @@ export function Header() {
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img 
-              src={pairobinLogo} 
-              alt="Pairobin" 
-              className="h-12 lg:h-14 w-auto object-contain"
-            />
+          <Link to="/" className="flex items-center gap-2">
+            <span className="font-heading font-black text-2xl lg:text-3xl text-primary tracking-tight">
+              PAIROBIN
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -59,7 +55,12 @@ export function Header() {
             <button className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary transition-colors">
               <User className="w-5 h-5" />
             </button>
-            <CartDrawer />
+            <button className="relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary transition-colors">
+              <ShoppingBag className="w-5 h-5" />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                0
+              </span>
+            </button>
 
             {/* Mobile Menu Button */}
             <button

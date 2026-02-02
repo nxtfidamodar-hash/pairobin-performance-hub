@@ -1,104 +1,17 @@
 import { Layout } from "@/components/layout";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ShopifyProductCard } from "@/components/shop/ShopifyProductCard";
-import { ShopifyProduct, fetchShopifyProducts } from "@/lib/shopify";
-import { Loader2, Package } from "lucide-react";
-
-// Categories with Shopify product type filters
-const categories = [
-  { name: "All", slug: "all", count: 31 },
-  { name: "Running", slug: "running", count: 3 },
-  { name: "Walking", slug: "walking", count: 5 },
-  { name: "Cycling", slug: "cycling", count: 7 },
-  { name: "Kids", slug: "kids", count: 5 },
-  { name: "Outdoor", slug: "outdoor", count: 4 },
-  { name: "Roller", slug: "roller", count: 2 },
-  { name: "Tennis", slug: "tennis", count: 3 },
-  { name: "Pickleball", slug: "pickleball", count: 1 },
-  { name: "Cheerleading", slug: "cheerleading", count: 1 },
-];
+import { ProductCard } from "@/components/product";
+import { products, categories } from "@/data/products";
 
 const Shop = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
-  const [products, setProducts] = useState<ShopifyProduct[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [sortOption, setSortOption] = useState("featured");
 
-  useEffect(() => {
-    async function loadProducts() {
-      setIsLoading(true);
-      try {
-        const fetchedProducts = await fetchShopifyProducts(50);
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error("Failed to load products:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    loadProducts();
-  }, []);
-
-  // Filter products by category
-  const filteredProducts = activeCategory === "all"
-    ? products
-    : products.filter(p => {
-        const title = p.node.title.toLowerCase();
-        const category = activeCategory.toLowerCase();
-        
-        // Match by title keywords for better filtering
-        if (category === "cycling") return title.includes("cycling");
-        if (category === "walking") return title.includes("walking");
-        if (category === "running") return title.includes("running");
-        if (category === "kids") return title.includes("kids");
-        if (category === "outdoor" || category === "hiking") return title.includes("hiking") || title.includes("outdoor");
-        if (category === "roller") return title.includes("roller") || title.includes("skate");
-        if (category === "tennis") return title.includes("tennis");
-        if (category === "pickleball") return title.includes("pickleball");
-        if (category === "cheerleading") return title.includes("cheerleading");
-        return true;
-      });
-
-  // Sort products
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    const priceA = parseFloat(a.node.priceRange.minVariantPrice.amount);
-    const priceB = parseFloat(b.node.priceRange.minVariantPrice.amount);
-    
-    switch (sortOption) {
-      case "price-low":
-        return priceA - priceB;
-      case "price-high":
-        return priceB - priceA;
-      case "newest":
-        return 0; // Keep original order (newest from API)
-      default:
-        return 0; // Featured - keep original order
-    }
-  });
-
-  // Update category counts based on actual products
-  const categoriesWithCounts = categories.map(cat => {
-    if (cat.slug === "all") {
-      return { ...cat, count: products.length };
-    }
-    const count = products.filter(p => {
-      const title = p.node.title.toLowerCase();
-      if (cat.slug === "cycling") return title.includes("cycling");
-      if (cat.slug === "walking") return title.includes("walking");
-      if (cat.slug === "running") return title.includes("running");
-      if (cat.slug === "kids") return title.includes("kids");
-      if (cat.slug === "outdoor") return title.includes("hiking") || title.includes("outdoor");
-      if (cat.slug === "roller") return title.includes("roller") || title.includes("skate");
-      if (cat.slug === "tennis") return title.includes("tennis");
-      if (cat.slug === "pickleball") return title.includes("pickleball");
-      if (cat.slug === "cheerleading") return title.includes("cheerleading");
-      return false;
-    }).length;
-    return { ...cat, count };
-  });
+  const filteredProducts = activeCategory === "all" 
+    ? products 
+    : products.filter(p => p.category.toLowerCase() === activeCategory);
 
   return (
     <Layout>
@@ -129,7 +42,7 @@ const Shop = () => {
                 <div>
                   <h3 className="font-heading font-bold text-lg mb-4">Categories</h3>
                   <div className="space-y-2">
-                    {categoriesWithCounts.filter(c => c.count > 0 || c.slug === "all").map((category) => (
+                    {categories.map((category) => (
                       <button
                         key={category.slug}
                         onClick={() => setActiveCategory(category.slug)}
@@ -145,6 +58,32 @@ const Shop = () => {
                     ))}
                   </div>
                 </div>
+
+                {/* Price Range */}
+                <div>
+                  <h3 className="font-heading font-bold text-lg mb-4">Price Range</h3>
+                  <div className="space-y-2">
+                    {["Under $100", "$100 - $150", "$150 - $200", "Over $200"].map((range) => (
+                      <label key={range} className="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" className="w-4 h-4 rounded border-border text-accent focus:ring-accent" />
+                        <span className="text-sm">{range}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Gender */}
+                <div>
+                  <h3 className="font-heading font-bold text-lg mb-4">Gender</h3>
+                  <div className="space-y-2">
+                    {["Men", "Women", "Unisex", "Kids"].map((gender) => (
+                      <label key={gender} className="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" className="w-4 h-4 rounded border-border text-accent focus:ring-accent" />
+                        <span className="text-sm">{gender}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
               </div>
             </aside>
 
@@ -153,7 +92,7 @@ const Shop = () => {
               {/* Toolbar */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
                 <p className="text-muted-foreground">
-                  Showing <span className="font-semibold text-foreground">{sortedProducts.length}</span> products
+                  Showing <span className="font-semibold text-foreground">{filteredProducts.length}</span> products
                 </p>
                 <div className="flex items-center gap-4">
                   <Button
@@ -165,22 +104,19 @@ const Shop = () => {
                     <Filter className="w-4 h-4 mr-2" />
                     Filters
                   </Button>
-                  <select 
-                    className="px-4 py-2 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                    value={sortOption}
-                    onChange={(e) => setSortOption(e.target.value)}
-                  >
-                    <option value="featured">Sort: Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="newest">Newest</option>
+                  <select className="px-4 py-2 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                    <option>Sort: Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest</option>
+                    <option>Best Selling</option>
                   </select>
                 </div>
               </div>
 
               {/* Mobile Category Pills */}
               <div className="flex gap-2 overflow-x-auto pb-4 mb-6 lg:hidden scrollbar-hide">
-                {categoriesWithCounts.filter(c => c.count > 0 || c.slug === "all").map((category) => (
+                {categories.map((category) => (
                   <button
                     key={category.slug}
                     onClick={() => setActiveCategory(category.slug)}
@@ -196,27 +132,18 @@ const Shop = () => {
               </div>
 
               {/* Products Grid */}
-              {isLoading ? (
-                <div className="flex items-center justify-center py-20">
-                  <Loader2 className="w-8 h-8 animate-spin text-accent" />
-                </div>
-              ) : sortedProducts.length === 0 ? (
-                <div className="text-center py-20 bg-secondary/20 rounded-xl">
-                  <Package className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-                  <h3 className="font-heading text-xl font-bold mb-2">No Products Found</h3>
-                  <p className="text-muted-foreground max-w-md mx-auto">
-                    {activeCategory !== "all" 
-                      ? "No products in this category. Try selecting a different category."
-                      : "Products will appear here once they are added to the store."}
-                  </p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {sortedProducts.map((product) => (
-                    <ShopifyProductCard key={product.node.id} product={product} />
-                  ))}
-                </div>
-              )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} {...product} />
+                ))}
+              </div>
+
+              {/* Load More */}
+              <div className="mt-12 text-center">
+                <Button variant="outline" size="lg">
+                  Load More Products
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -233,12 +160,12 @@ const Shop = () => {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            {/* Mobile filter content */}
+            {/* Mobile filter content - same as sidebar */}
             <div className="space-y-8">
               <div>
                 <h3 className="font-heading font-bold text-lg mb-4">Categories</h3>
                 <div className="space-y-2">
-                  {categoriesWithCounts.filter(c => c.count > 0 || c.slug === "all").map((category) => (
+                  {categories.map((category) => (
                     <button
                       key={category.slug}
                       onClick={() => {

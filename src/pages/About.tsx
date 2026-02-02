@@ -27,10 +27,11 @@ const values = [
 ];
 
 const milestones = [
-  { year: "Founded", title: "Our Beginning", description: "Pairobin was established with a vision to create quality footwear for everyday wear." },
-  { year: "Design", title: "In-House Development", description: "All products designed in-house with focus on comfort, durability, and quality control." },
-  { year: "Manufacturing", title: "Quality Production", description: "Produced through owned and partner manufacturing facilities with strict quality standards." },
-  { year: "Today", title: "US Market Focus", description: "Proudly serving customers in the United States through our official website." },
+  { year: "2008", title: "Founded", description: "Pairobin started with a vision to create better athletic footwear." },
+  { year: "2012", title: "First Collection", description: "Launched our inaugural running shoe collection to rave reviews." },
+  { year: "2016", title: "Global Expansion", description: "Expanded distribution to 15+ countries across 4 continents." },
+  { year: "2020", title: "Sustainability", description: "Launched eco-friendly line with recycled materials." },
+  { year: "2024", title: "Innovation Lab", description: "Opened state-of-the-art R&D facility for next-gen footwear." },
 ];
 
 const capabilities = [
@@ -70,12 +71,12 @@ const About = () => {
               Our Story
             </p>
             <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.1] mb-6 animate-slide-up">
-              Quality Footwear for Everyday Wear
+              Engineered for Excellence
             </h1>
             <p className="text-xl text-primary-foreground/80 leading-relaxed animate-slide-up stagger-1">
-              Pairobin is a footwear brand focused on designing and developing quality shoes for everyday wear. 
-              Our products are designed in-house and produced through owned and partner manufacturing facilities, 
-              with a strong emphasis on comfort, durability, and quality control.
+              For over 15 years, Pairobin has been at the forefront of athletic footwear 
+              innovation. We combine cutting-edge technology with timeless craftsmanship 
+              to create shoes that help athletes of all levels perform at their best.
             </p>
           </div>
         </div>
@@ -90,17 +91,18 @@ const About = () => {
                 Our Mission
               </p>
               <h2 className="section-title mb-6">
-                Our Commitment to Quality
+                Empowering Every Step
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                At Pairobin, we believe that great footwear can transform the way you move and live. 
-                Our mission is to design and manufacture shoes that combine comfort, durability, and style – 
-                making quality footwear accessible to customers across the United States.
+                At Pairobin, we believe that great footwear can transform the way you move, 
+                train, and live. Our mission is to design and manufacture athletic shoes that 
+                combine performance, comfort, and style – making premium footwear accessible 
+                to athletes and active individuals worldwide.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                We sell directly to customers through our official website, ensuring you receive 
-                authentic products with excellent customer service. Pairobin is operated by 
-                石狮市派罗宾运动科技有限公司.
+                From professional marathoners to weekend joggers, from competitive cyclists 
+                to families exploring the outdoors – we're committed to supporting every 
+                journey with footwear that performs as hard as you do.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="default" size="lg" asChild>
@@ -143,20 +145,20 @@ const About = () => {
         <div className="container-wide">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">Quality</p>
-              <p className="text-primary-foreground/70">First Priority</p>
+              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">15+</p>
+              <p className="text-primary-foreground/70">Years Experience</p>
             </div>
             <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">USA</p>
-              <p className="text-primary-foreground/70">Market Focus</p>
+              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">500+</p>
+              <p className="text-primary-foreground/70">Retail Partners</p>
             </div>
             <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">Direct</p>
-              <p className="text-primary-foreground/70">To Customer</p>
+              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">1M+</p>
+              <p className="text-primary-foreground/70">Pairs Sold</p>
             </div>
             <div className="text-center">
-              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">In-House</p>
-              <p className="text-primary-foreground/70">Design Team</p>
+              <p className="font-heading font-black text-5xl md:text-6xl text-accent mb-2">30+</p>
+              <p className="text-primary-foreground/70">Countries</p>
             </div>
           </div>
         </div>
