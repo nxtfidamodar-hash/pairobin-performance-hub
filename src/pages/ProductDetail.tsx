@@ -1,96 +1,114 @@
 import { Layout } from "@/components/layout";
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
-import { Star, Heart, ShoppingBag, Truck, Shield, RefreshCw, Minus, Plus, ChevronRight, Check } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Heart, ShoppingBag, Truck, Shield, RefreshCw, Minus, Plus, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "@/components/product";
-import { toast } from "@/hooks/use-toast";
-import productRunning from "@/assets/product-running-1.jpg";
-import productWalking from "@/assets/product-walking-1.jpg";
-import productCycling from "@/assets/product-cycling-1.jpg";
-
-const product = {
-  id: "velocity-pro-x",
-  name: "Velocity Pro X",
-  category: "Running",
-  price: 159.99,
-  originalPrice: 189.99,
-  rating: 4.8,
-  reviewCount: 245,
-  images: [productRunning, productRunning, productRunning, productRunning],
-  colors: [
-    { name: "Coral Blaze", hex: "#FF6B35" },
-    { name: "Midnight Navy", hex: "#1a1a2e" },
-    { name: "Pure White", hex: "#ffffff" },
-  ],
-  sizes: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12"],
-  description: "The Velocity Pro X is our flagship running shoe, designed for serious runners who demand the best. Featuring our proprietary FlowFoam cushioning technology, this shoe delivers exceptional energy return and comfort mile after mile.",
-  features: [
-    "FlowFoam midsole for superior cushioning and energy return",
-    "Breathable engineered mesh upper for optimal airflow",
-    "Strategic rubber outsole for maximum traction",
-    "Lightweight construction at just 8.5 oz",
-    "Reflective details for low-light visibility",
-    "Ortholite sockliner for moisture management",
-  ],
-};
-
-const relatedProducts = [
-  {
-    id: "comfort-stride-elite",
-    name: "Comfort Stride Elite",
-    category: "Walking",
-    price: 129.99,
-    rating: 4.9,
-    reviewCount: 189,
-    image: productWalking,
-    badge: "new" as const,
-    colors: ["#1e3a5f", "#333333"],
-  },
-  {
-    id: "aero-cycle-pro",
-    name: "Aero Cycle Pro",
-    category: "Cycling",
-    price: 199.99,
-    rating: 4.7,
-    reviewCount: 132,
-    image: productCycling,
-    colors: ["#000000", "#FF6B35"],
-  },
-  {
-    id: "marathon-elite",
-    name: "Marathon Elite 2.0",
-    category: "Running",
-    price: 189.99,
-    rating: 4.9,
-    reviewCount: 421,
-    image: productRunning,
-    badge: "bestseller" as const,
-    colors: ["#FF6B35", "#000000"],
-  },
-];
+import { toast } from "sonner";
+import { fetchProductByHandle, fetchProducts, ShopifyProduct } from "@/lib/shopify";
+import { useCartStore } from "@/stores/cartStore";
+import { ShopifyProductCard } from "@/components/product/ShopifyProductCard";
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const [selectedColor, setSelectedColor] = useState(0);
+  const { id: handle } = useParams();
+  const [product, setProduct] = useState<ShopifyProduct['node'] | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<ShopifyProduct[]>([]);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [selectedVariant, setSelectedVariant] = useState<ShopifyProduct['node']['variants']['edges'][0]['node'] | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleAddToCart = () => {
-    if (!selectedSize) {
-      toast({
-        title: "Please select a size",
-        description: "Choose your size before adding to cart.",
-        variant: "destructive",
-      });
+  const addItem = useCartStore((state) => state.addItem);
+  const isAddingToCart = useCartStore((state) => state.isLoading);
+
+  useEffect(() => {
+    const loadProduct = async () => {
+      if (!handle) return;
+      
+      setIsLoading(true);
+      try {
+        const [fetchedProduct, fetchedRelated] = await Promise.all([
+          fetchProductByHandle(handle),
+          fetchProducts(4)
+        ]);
+        
+        setProduct(fetchedProduct);
+        // Filter out current product from related
+        setRelatedProducts(fetchedRelated.filter(p => p.node.handle !== handle).slice(0, 3));
+        
+        // Reset selections
+        setSelectedSize(null);
+        setSelectedVariant(null);
+        setSelectedImage(0);
+        setQuantity(1);
+      } catch (error) {
+        console.error("Failed to fetch product:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProduct();
+  }, [handle]);
+
+  // Update selected variant when size changes
+  useEffect(() => {
+    if (product && selectedSize) {
+      const variant = product.variants.edges.find(
+        v => v.node.selectedOptions.some(opt => opt.value === selectedSize)
+      )?.node;
+      setSelectedVariant(variant || null);
+    }
+  }, [selectedSize, product]);
+
+  const handleAddToCart = async () => {
+    if (!product || !selectedVariant) {
+      toast.error("Please select a size");
       return;
     }
-    toast({
-      title: "Added to Cart!",
-      description: `${product.name} (Size ${selectedSize}) x ${quantity}`,
+
+    await addItem({
+      product: { node: product },
+      variantId: selectedVariant.id,
+      variantTitle: selectedVariant.title,
+      price: selectedVariant.price,
+      quantity,
+      selectedOptions: selectedVariant.selectedOptions,
+    });
+
+    toast.success("Added to cart!", {
+      description: `${product.title} (${selectedSize}) x ${quantity}`,
     });
   };
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!product) {
+    return (
+      <Layout>
+        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+          <h1 className="font-heading font-bold text-2xl mb-4">Product Not Found</h1>
+          <p className="text-muted-foreground mb-6">The product you're looking for doesn't exist.</p>
+          <Button asChild>
+            <Link to="/shop">Continue Shopping</Link>
+          </Button>
+        </div>
+      </Layout>
+    );
+  }
+
+  const images = product.images.edges;
+  const sizes = product.options.find(opt => opt.name.toLowerCase() === 'size')?.values || [];
+  const price = selectedVariant ? parseFloat(selectedVariant.price.amount) : parseFloat(product.priceRange.minVariantPrice.amount);
+  const currency = product.priceRange.minVariantPrice.currencyCode;
 
   return (
     <Layout>
@@ -102,9 +120,7 @@ const ProductDetail = () => {
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
             <Link to="/shop" className="text-muted-foreground hover:text-foreground">Shop</Link>
             <ChevronRight className="w-4 h-4 text-muted-foreground" />
-            <Link to="/shop/running" className="text-muted-foreground hover:text-foreground">{product.category}</Link>
-            <ChevronRight className="w-4 h-4 text-muted-foreground" />
-            <span className="text-foreground font-medium">{product.name}</span>
+            <span className="text-foreground font-medium line-clamp-1">{product.title}</span>
           </nav>
         </div>
       </div>
@@ -116,110 +132,85 @@ const ProductDetail = () => {
             {/* Images */}
             <div className="space-y-4">
               <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
-                <img
-                  src={product.images[selectedImage]}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
+                {images[selectedImage]?.node ? (
+                  <img
+                    src={images[selectedImage].node.url}
+                    alt={images[selectedImage].node.altText || product.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-muted-foreground">No image</span>
+                  </div>
+                )}
               </div>
-              <div className="grid grid-cols-4 gap-4">
-                {product.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImage(index)}
-                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-colors ${
-                      selectedImage === index ? 'border-accent' : 'border-transparent hover:border-border'
-                    }`}
-                  >
-                    <img src={image} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
+              {images.length > 1 && (
+                <div className="grid grid-cols-4 gap-4">
+                  {images.slice(0, 4).map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImage(index)}
+                      className={`aspect-square rounded-xl overflow-hidden border-2 transition-colors ${
+                        selectedImage === index ? 'border-accent' : 'border-transparent hover:border-border'
+                      }`}
+                    >
+                      <img src={image.node.url} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Details */}
             <div>
               <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-2">
-                {product.category}
+                Pairobin
               </p>
-              <h1 className="font-heading font-black text-4xl md:text-5xl mb-4">
-                {product.name}
+              <h1 className="font-heading font-black text-3xl md:text-4xl mb-6">
+                {product.title}
               </h1>
-
-              {/* Rating */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-5 h-5 ${i < Math.floor(product.rating) ? 'fill-accent text-accent' : 'fill-muted text-muted'}`}
-                    />
-                  ))}
-                </div>
-                <span className="text-muted-foreground">
-                  {product.rating} ({product.reviewCount} reviews)
-                </span>
-              </div>
 
               {/* Price */}
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-heading font-black text-4xl text-foreground">
-                  ${product.price.toFixed(2)}
+                  ${price.toFixed(2)}
                 </span>
-                {product.originalPrice && (
-                  <>
-                    <span className="text-xl text-muted-foreground line-through">
-                      ${product.originalPrice.toFixed(2)}
-                    </span>
-                    <span className="badge-sale">
-                      Save ${(product.originalPrice - product.price).toFixed(0)}
-                    </span>
-                  </>
-                )}
-              </div>
-
-              {/* Color Selection */}
-              <div className="mb-6">
-                <p className="font-medium mb-3">
-                  Color: <span className="text-muted-foreground">{product.colors[selectedColor].name}</span>
-                </p>
-                <div className="flex gap-3">
-                  {product.colors.map((color, index) => (
-                    <button
-                      key={color.name}
-                      onClick={() => setSelectedColor(index)}
-                      className={`w-10 h-10 rounded-full border-2 transition-all ${
-                        selectedColor === index ? 'border-accent ring-2 ring-accent ring-offset-2' : 'border-border'
-                      }`}
-                      style={{ backgroundColor: color.hex }}
-                      title={color.name}
-                    />
-                  ))}
-                </div>
+                <span className="text-lg text-muted-foreground">{currency}</span>
               </div>
 
               {/* Size Selection */}
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <p className="font-medium">Select Size</p>
-                  <Link to="/size-guide" className="text-sm text-accent hover:underline">Size Guide</Link>
+              {sizes.length > 0 && (
+                <div className="mb-8">
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="font-medium">Select Size</p>
+                  </div>
+                  <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
+                    {sizes.map((size) => {
+                      const variant = product.variants.edges.find(
+                        v => v.node.selectedOptions.some(opt => opt.value === size)
+                      )?.node;
+                      const isAvailable = variant?.availableForSale;
+                      
+                      return (
+                        <button
+                          key={size}
+                          onClick={() => setSelectedSize(size)}
+                          disabled={!isAvailable}
+                          className={`py-3 rounded-lg font-medium text-xs sm:text-sm transition-colors ${
+                            selectedSize === size
+                              ? 'bg-primary text-primary-foreground'
+                              : isAvailable
+                                ? 'bg-secondary hover:bg-secondary/80'
+                                : 'bg-secondary/50 text-muted-foreground cursor-not-allowed line-through'
+                          }`}
+                        >
+                          {size}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div className="grid grid-cols-6 gap-2">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`py-3 rounded-lg font-medium text-sm transition-colors ${
-                        selectedSize === size
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-secondary hover:bg-secondary/80'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              )}
 
               {/* Quantity & Add to Cart */}
               <div className="flex gap-4 mb-8">
@@ -238,9 +229,21 @@ const ProductDetail = () => {
                     <Plus className="w-5 h-5" />
                   </button>
                 </div>
-                <Button variant="accent" size="lg" className="flex-1" onClick={handleAddToCart}>
-                  <ShoppingBag className="w-5 h-5 mr-2" />
-                  Add to Cart
+                <Button 
+                  variant="accent" 
+                  size="lg" 
+                  className="flex-1" 
+                  onClick={handleAddToCart}
+                  disabled={isAddingToCart || (sizes.length > 0 && !selectedSize)}
+                >
+                  {isAddingToCart ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>
+                      <ShoppingBag className="w-5 h-5 mr-2" />
+                      Add to Cart
+                    </>
+                  )}
                 </Button>
                 <Button variant="outline" size="lg">
                   <Heart className="w-5 h-5" />
@@ -272,35 +275,30 @@ const ProductDetail = () => {
               </div>
 
               {/* Description */}
-              <div className="border-t border-border pt-8">
-                <h3 className="font-heading font-bold text-xl mb-4">About This Product</h3>
-                <p className="text-muted-foreground mb-6">{product.description}</p>
-                <h4 className="font-semibold mb-3">Key Features</h4>
-                <ul className="space-y-2">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
-                      <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {product.description && (
+                <div className="border-t border-border pt-8">
+                  <h3 className="font-heading font-bold text-xl mb-4">About This Product</h3>
+                  <p className="text-muted-foreground whitespace-pre-line">{product.description}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* Related Products */}
-      <section className="section-padding bg-secondary">
-        <div className="container-wide">
-          <h2 className="section-title mb-8">You May Also Like</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {relatedProducts.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
+      {relatedProducts.length > 0 && (
+        <section className="section-padding bg-secondary">
+          <div className="container-wide">
+            <h2 className="section-title mb-8">You May Also Like</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedProducts.map((product) => (
+                <ShopifyProductCard key={product.node.id} product={product} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </Layout>
   );
 };

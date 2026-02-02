@@ -1,17 +1,49 @@
 import { Layout } from "@/components/layout";
-import { useState } from "react";
-import { Filter, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Filter, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "@/components/product";
-import { products, categories } from "@/data/products";
+import { ShopifyProductCard } from "@/components/product/ShopifyProductCard";
+import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
+
+const categories = [
+  { name: "All", slug: "all" },
+  { name: "Cycling", slug: "cycling" },
+  { name: "Walking", slug: "walking" },
+  { name: "Tennis", slug: "tennis" },
+  { name: "Roller Skates", slug: "roller" },
+  { name: "Kids", slug: "kids" },
+  { name: "Hiking", slug: "hiking" },
+  { name: "Pickleball", slug: "pickleball" },
+  { name: "Cheerleading", slug: "cheerleading" },
+];
 
 const Shop = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [products, setProducts] = useState<ShopifyProduct[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const filteredProducts = activeCategory === "all" 
-    ? products 
-    : products.filter(p => p.category.toLowerCase() === activeCategory);
+  useEffect(() => {
+    const loadProducts = async () => {
+      setIsLoading(true);
+      try {
+        // Build query based on category
+        let query: string | undefined;
+        if (activeCategory !== "all") {
+          // Search in product type or title
+          query = `product_type:*${activeCategory}* OR title:*${activeCategory}*`;
+        }
+        const fetchedProducts = await fetchProducts(50, query);
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, [activeCategory]);
 
   return (
     <Layout>
@@ -53,34 +85,7 @@ const Shop = () => {
                         }`}
                       >
                         <span>{category.name}</span>
-                        <span className="text-xs opacity-60">({category.count})</span>
                       </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price Range */}
-                <div>
-                  <h3 className="font-heading font-bold text-lg mb-4">Price Range</h3>
-                  <div className="space-y-2">
-                    {["Under $100", "$100 - $150", "$150 - $200", "Over $200"].map((range) => (
-                      <label key={range} className="flex items-center gap-3 cursor-pointer">
-                        <input type="checkbox" className="w-4 h-4 rounded border-border text-accent focus:ring-accent" />
-                        <span className="text-sm">{range}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Gender */}
-                <div>
-                  <h3 className="font-heading font-bold text-lg mb-4">Gender</h3>
-                  <div className="space-y-2">
-                    {["Men", "Women", "Unisex", "Kids"].map((gender) => (
-                      <label key={gender} className="flex items-center gap-3 cursor-pointer">
-                        <input type="checkbox" className="w-4 h-4 rounded border-border text-accent focus:ring-accent" />
-                        <span className="text-sm">{gender}</span>
-                      </label>
                     ))}
                   </div>
                 </div>
@@ -92,7 +97,13 @@ const Shop = () => {
               {/* Toolbar */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
                 <p className="text-muted-foreground">
-                  Showing <span className="font-semibold text-foreground">{filteredProducts.length}</span> products
+                  {isLoading ? (
+                    "Loading products..."
+                  ) : (
+                    <>
+                      Showing <span className="font-semibold text-foreground">{products.length}</span> products
+                    </>
+                  )}
                 </p>
                 <div className="flex items-center gap-4">
                   <Button
@@ -104,13 +115,6 @@ const Shop = () => {
                     <Filter className="w-4 h-4 mr-2" />
                     Filters
                   </Button>
-                  <select className="px-4 py-2 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent">
-                    <option>Sort: Featured</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Newest</option>
-                    <option>Best Selling</option>
-                  </select>
                 </div>
               </div>
 
@@ -132,18 +136,22 @@ const Shop = () => {
               </div>
 
               {/* Products Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} {...product} />
-                ))}
-              </div>
-
-              {/* Load More */}
-              <div className="mt-12 text-center">
-                <Button variant="outline" size="lg">
-                  Load More Products
-                </Button>
-              </div>
+              {isLoading ? (
+                <div className="flex items-center justify-center py-20">
+                  <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+                </div>
+              ) : products.length === 0 ? (
+                <div className="text-center py-20">
+                  <p className="text-lg text-muted-foreground">No products found</p>
+                  <p className="text-sm text-muted-foreground mt-2">Try a different category</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {products.map((product) => (
+                    <ShopifyProductCard key={product.node.id} product={product} />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -160,7 +168,6 @@ const Shop = () => {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            {/* Mobile filter content - same as sidebar */}
             <div className="space-y-8">
               <div>
                 <h3 className="font-heading font-bold text-lg mb-4">Categories</h3>
@@ -179,7 +186,6 @@ const Shop = () => {
                       }`}
                     >
                       <span>{category.name}</span>
-                      <span className="text-xs opacity-60">({category.count})</span>
                     </button>
                   ))}
                 </div>
