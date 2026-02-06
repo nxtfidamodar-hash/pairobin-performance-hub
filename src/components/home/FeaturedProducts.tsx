@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "@/components/product";
-import { getFeaturedProducts } from "@/data/products";
-
-const featuredProducts = getFeaturedProducts();
+import { ShopifyProductCard } from "@/components/product/ShopifyProductCard";
+import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
+import { useState, useEffect } from "react";
 
 export function FeaturedProducts() {
+  const [products, setProducts] = useState<ShopifyProduct[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const fetched = await fetchProducts(6);
+        setProducts(fetched.slice(0, 6));
+      } catch (error) {
+        console.error("Failed to fetch featured products:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadProducts();
+  }, []);
+
   return (
     <section className="section-padding bg-secondary">
       <div className="container-wide">
@@ -29,11 +45,17 @@ export function FeaturedProducts() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {products.map((product) => (
+              <ShopifyProductCard key={product.node.id} product={product} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

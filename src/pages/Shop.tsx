@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Filter, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ShopifyProductCard } from "@/components/product/ShopifyProductCard";
@@ -18,10 +19,19 @@ const categories = [
 ];
 
 const Shop = () => {
+  const { category: urlCategory } = useParams();
   const [activeCategory, setActiveCategory] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Sync URL category param with state
+  useEffect(() => {
+    if (urlCategory) {
+      const match = categories.find(c => c.slug === urlCategory);
+      if (match) setActiveCategory(match.slug);
+    }
+  }, [urlCategory]);
 
   useEffect(() => {
     const loadProducts = async () => {
