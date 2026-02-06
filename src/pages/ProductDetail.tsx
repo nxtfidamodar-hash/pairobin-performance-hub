@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { fetchProductByHandle, fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { ShopifyProductCard } from "@/components/product/ShopifyProductCard";
+import { ProductJsonLd } from "@/components/product/ProductJsonLd";
 
 const ProductDetail = () => {
   const { id: handle } = useParams();
@@ -112,6 +113,7 @@ const ProductDetail = () => {
 
   return (
     <Layout>
+      <ProductJsonLd product={product} />
       {/* Breadcrumb */}
       <div className="bg-secondary py-4">
         <div className="container-wide">

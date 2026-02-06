@@ -28,7 +28,7 @@ const footerLinks = {
     { name: "Manufacturing", href: "/manufacturing" },
     { name: "B2B Wholesale", href: "/b2b" },
     { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/careers" },
+    { name: "FAQ", href: "/faq" },
   ],
   support: [
     { name: "FAQ", href: "/faq" },
