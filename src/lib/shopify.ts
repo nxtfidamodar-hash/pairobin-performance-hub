@@ -2,7 +2,7 @@ import { toast } from "sonner";
 
 // Shopify Storefront API Configuration
 const SHOPIFY_API_VERSION = '2025-07';
-const SHOPIFY_STORE_PERMANENT_DOMAIN = 'pairobin-performance-hub-g17nl.myshopify.com';
+const SHOPIFY_STORE_PERMANENT_DOMAIN = 'pairobin.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 const SHOPIFY_STOREFRONT_TOKEN = '804f6f62b545815435b9a2368f8f5308';
 
