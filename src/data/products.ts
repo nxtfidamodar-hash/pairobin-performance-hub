@@ -11,13 +11,11 @@ import rollerKids4Wheel from "@/assets/products/roller-kids-4wheel.jpg";
 import rollerKidsPink from "@/assets/products/roller-kids-pink.jpg";
 import rollerKids2Wheel from "@/assets/products/roller-kids-2wheel.jpg";
 
-// Placeholder images using existing assets for additional products
 import productRunning from "@/assets/product-running-1.jpg";
 import productWalking from "@/assets/product-walking-1.jpg";
 import productKids from "@/assets/product-kids-1.jpg";
 import productOutdoor from "@/assets/product-outdoor-1.jpg";
 
-// New product images from Wecoosport
 import cheerleadingBlack from "@/assets/products/cheerleading-black.jpg";
 import tennisWhite from "@/assets/products/tennis-white.png";
 import tennisPerformance from "@/assets/products/tennis-performance.png";
@@ -52,7 +50,7 @@ export const products: Product[] = [
   // CYCLING SHOES
   {
     id: "army-green-cycling-shoe",
-    name: "Army-Green Cycling Shoe",
+    name: "Pairobin SPD Cycling Shoes – Army Green, Mesh Upper, Recessed Cleats",
     category: "Cycling",
     price: 80.00,
     originalPrice: 89.00,
@@ -62,7 +60,7 @@ export const products: Product[] = [
     badge: "bestseller",
     colors: ["#556B2F", "#FF6B35", "#000000"],
     sizes: ["5.5", "6.5", "7", "8", "8.5", "9.5", "10"],
-    description: "Premium cycling shoe with recessed SPD cleats and engineered mesh upper for superior performance and comfort.",
+    description: "Pairobin army green cycling shoes with recessed SPD cleats and engineered mesh upper. Features a durable rubber sole, built-in nylon bracket for efficient power transfer, anti-odor lining, and a secure Velcro strap. Suitable for indoor spinning and outdoor road cycling. Available in men's and women's sizes 5.5–10.",
     features: [
       "Rubber sole",
       "Recessed SPD cleats included",
@@ -74,7 +72,7 @@ export const products: Product[] = [
   },
   {
     id: "beige-green-cycling-shoe",
-    name: "Beige-Green Cycling Shoes",
+    name: "Pairobin SPD Cycling Shoes – Beige Green, Breathable Mesh, Unisex",
     category: "Cycling",
     price: 79.00,
     originalPrice: 89.00,
@@ -84,7 +82,7 @@ export const products: Product[] = [
     badge: "sale",
     colors: ["#F5F5DC", "#90EE90", "#FF6B35"],
     sizes: ["5.5", "6.5", "7", "8", "8.5", "9.5", "10"],
-    description: "Stylish cycling shoe with breathable mesh design and recessed SPD cleats for versatile indoor/outdoor use.",
+    description: "Pairobin beige green cycling shoes featuring breathable mesh upper and recessed SPD cleats. Lightweight rubber sole with Velcro closure for a secure, adjustable fit. Designed for both indoor cycling classes and outdoor rides. Unisex sizing from 5.5 to 10.",
     features: [
       "Rubber sole",
       "Recessed SPD cleats included",
@@ -95,7 +93,7 @@ export const products: Product[] = [
   },
   {
     id: "beige-pink-cycling-shoe",
-    name: "Beige-Pink Cycling Shoes",
+    name: "Pairobin Women's SPD Cycling Shoes – Beige Pink, Mesh Upper",
     category: "Cycling",
     price: 79.00,
     originalPrice: 89.00,
@@ -105,18 +103,18 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#F5F5DC", "#FF69B4", "#FFFFFF"],
     sizes: ["5.5", "6.5", "7", "8", "8.5", "9.5", "10"],
-    description: "Elegant women's cycling shoe with performance features and stylish color combination.",
+    description: "Pairobin women's beige pink cycling shoes with recessed SPD cleats and engineered mesh for breathability. Rubber sole and secure Velcro closure provide stability during indoor and outdoor cycling sessions. Sizes 5.5–10.",
     features: [
       "Rubber sole",
       "Recessed SPD cleats included",
       "Engineered mesh for breathability",
       "Secure Velcro closure",
-      "Perfect for indoor and outdoor cycling"
+      "Suitable for indoor and outdoor cycling"
     ]
   },
   {
     id: "black-green-cycling-shoe",
-    name: "Black-Green Cycling Shoes",
+    name: "Pairobin SPD Cycling Shoes – Black Green, Anti-Odor, Rubber Sole",
     category: "Cycling",
     price: 79.00,
     originalPrice: 89.00,
@@ -125,7 +123,7 @@ export const products: Product[] = [
     image: cyclingBlackGreen,
     colors: ["#000000", "#00FF00", "#333333"],
     sizes: ["5.5", "6.5", "7", "8", "8.5", "9.5", "10"],
-    description: "Bold black and green cycling shoe built for performance and style.",
+    description: "Pairobin black and green cycling shoes with recessed SPD cleats, anti-odor lining, and durable rubber sole. Secure fit system keeps feet stable during high-intensity rides. Compatible with standard SPD pedals. Unisex sizes 5.5–10.",
     features: [
       "Rubber sole",
       "Recessed SPD cleats included",
@@ -135,7 +133,7 @@ export const products: Product[] = [
   },
   {
     id: "green-cycling-shoe",
-    name: "Green Cycling Shoes",
+    name: "Pairobin SPD Cycling Shoes – Green, Lightweight Mesh, Unisex",
     category: "Cycling",
     price: 79.00,
     originalPrice: 89.00,
@@ -144,7 +142,7 @@ export const products: Product[] = [
     image: cyclingGreen,
     colors: ["#228B22", "#000000", "#FFFFFF"],
     sizes: ["5.5", "6.5", "7", "8", "8.5", "9.5", "10"],
-    description: "Vibrant green cycling shoe with professional-grade features for serious cyclists.",
+    description: "Pairobin green cycling shoes featuring breathable mesh upper and recessed SPD cleats. Lightweight construction with rubber sole for reliable grip. Ideal for road cycling and spin classes. Available in unisex sizes 5.5–10.",
     features: [
       "Rubber sole",
       "Recessed SPD cleats included",
@@ -154,7 +152,7 @@ export const products: Product[] = [
   },
   {
     id: "pink-cycling-shoe",
-    name: "Pink Cycling Shoes",
+    name: "Pairobin Women's SPD Cycling Shoes – Pink, Premium Mesh Upper",
     category: "Cycling",
     price: 79.00,
     originalPrice: 89.00,
@@ -164,7 +162,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#FF69B4", "#FFFFFF", "#FF1493"],
     sizes: ["5.5", "6.5", "7", "8", "8.5", "9.5", "10"],
-    description: "Eye-catching pink cycling shoes designed for women who demand both style and performance.",
+    description: "Pairobin women's pink cycling shoes with premium mesh upper and recessed SPD cleats. Velcro strap closure ensures a snug, adjustable fit. Rubber sole provides traction on and off the bike. Women's sizes 5.5–10.",
     features: [
       "Rubber sole",
       "Recessed SPD cleats included",
@@ -174,7 +172,7 @@ export const products: Product[] = [
   },
   {
     id: "indoor-cycling-pro",
-    name: "Professional Indoor Cycling Shoes",
+    name: "Pairobin Professional Indoor Cycling Shoes – Delta/SPD Compatible, Carbon-Reinforced Sole",
     category: "Cycling",
     price: 69.00,
     rating: 4.8,
@@ -183,7 +181,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#000000", "#FFFFFF", "#FF6B35"],
     sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "Professional-grade indoor cycling shoes with superior power transfer and ventilation for intense spinning sessions.",
+    description: "Pairobin professional indoor cycling shoes compatible with both Delta and SPD cleat systems. Carbon-reinforced rigid sole maximizes power transfer during spinning sessions. Breathable mesh panels and ratchet closure for a secure, ventilated fit. Unisex sizes 5–10.5.",
     features: [
       "Delta/SPD compatible cleats",
       "Rigid carbon-reinforced sole",
@@ -197,7 +195,7 @@ export const products: Product[] = [
   // ROLLER SHOES
   {
     id: "black-roller-shoes",
-    name: "Black Roller Shoes",
+    name: "Pairobin Kids LED Roller Shoes – Black, Retractable Wheels, USB Rechargeable",
     category: "Roller",
     price: 51.90,
     rating: 4.8,
@@ -206,7 +204,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#000000", "#00FF00", "#00FFFF"],
     sizes: ["12.5", "13.5", "1", "1.5", "2.5", "3", "3.5", "4.5", "5.5", "6", "7"],
-    description: "LED light-up roller shoes with retractable wheels. The wheels can be stowed for walking mode.",
+    description: "Pairobin kids' black LED roller shoes with retractable single wheel and USB-rechargeable lights. Wheels stow flush for normal walking mode. Velcro closure for easy on/off. 1–2 hour charge provides 4–5 hours of LED flashing. Kids' sizes 12.5–7.",
     features: [
       "Retractable wheel system",
       "LED lights with USB charging",
@@ -217,7 +215,7 @@ export const products: Product[] = [
   },
   {
     id: "pink-roller-shoes",
-    name: "Pink Roller Shoes",
+    name: "Pairobin Kids LED Roller Shoes – Pink, Retractable Wheels, USB Rechargeable",
     category: "Roller",
     price: 51.90,
     rating: 4.9,
@@ -226,7 +224,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#FF69B4", "#FFB6C1", "#FFFFFF"],
     sizes: ["12.5", "13.5", "1", "1.5", "2.5", "3", "3.5", "4.5", "5.5", "6", "7"],
-    description: "Stylish pink LED roller shoes with hidden retractable wheels for kids.",
+    description: "Pairobin kids' pink LED roller shoes with hidden retractable wheel and USB-rechargeable lights. Breathable upper keeps feet cool during active play. Easy Velcro closure for independent wear. Kids' sizes 12.5–7.",
     features: [
       "Retractable wheel system",
       "LED lights with USB charging",
@@ -237,7 +235,7 @@ export const products: Product[] = [
   },
   {
     id: "kids-roller-skate-4wheel-black",
-    name: "Black Hidden-Wheel Roller Skate Shoes – 4-Wheel",
+    name: "Pairobin Kids 4-Wheel Hidden Roller Skate Sneakers – Black, Walk & Roll",
     category: "Kids",
     subcategory: "Roller",
     price: 39.90,
@@ -247,7 +245,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#000000", "#9370DB", "#FF69B4", "#FFD700", "#00FF00"],
     sizes: ["1", "1.5", "3", "3.5", "4", "4.5", "5.5", "6", "6.5"],
-    description: "4-wheel hidden roller skate sneakers for kids. Walk or roll with trendy 2-in-1 design.",
+    description: "Pairobin kids' black 4-wheel hidden roller skate sneakers with 2-in-1 walk or roll functionality. Four concealed wheels retract into the sole for regular walking. Breathable upper and lightweight construction for all-day comfort. Kids' sizes 1–6.5.",
     features: [
       "4-wheel hidden design",
       "2-in-1 walk or roll function",
@@ -259,7 +257,7 @@ export const products: Product[] = [
   },
   {
     id: "kids-roller-skate-4wheel-pink",
-    name: "Girls' Pink Hidden-Wheel Roller Skate Shoes – 4-Wheel",
+    name: "Pairobin Girls' 4-Wheel Hidden Roller Skate Sneakers – Pink, Walk & Roll",
     category: "Kids",
     subcategory: "Roller",
     price: 39.90,
@@ -269,7 +267,7 @@ export const products: Product[] = [
     badge: "bestseller",
     colors: ["#FF69B4", "#000000", "#FFD700", "#00FF00"],
     sizes: ["1", "1.5", "3", "3.5", "4", "4.5", "5.5", "6", "6.5"],
-    description: "Fun and colorful 4-wheel roller sneakers for girls. Hidden wheels for easy walking or skating.",
+    description: "Pairobin girls' pink 4-wheel hidden roller skate sneakers with easy retract mechanism. Smooth-gliding wheels fold into the sole when not in use. Breathable material and trendy sneaker design for everyday wear and skating. Girls' sizes 1–6.5.",
     features: [
       "4-wheel hidden design",
       "Smooth gliding wheels",
@@ -280,7 +278,7 @@ export const products: Product[] = [
   },
   {
     id: "kids-roller-skate-2wheel",
-    name: "Black Hidden-Wheel Roller Skate Shoes – 2-Wheel",
+    name: "Pairobin Kids 2-Wheel Hidden Roller Skate Sneakers – Black, Mesh Upper",
     category: "Kids",
     subcategory: "Roller",
     price: 39.90,
@@ -290,7 +288,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#000000", "#FFD700", "#00FF00"],
     sizes: ["31", "32", "33", "34", "35", "36", "37", "38", "39", "40"],
-    description: "2-wheel hidden roller sneakers for kids. Perfect balance of skating fun and everyday wear.",
+    description: "Pairobin kids' black 2-wheel hidden roller skate sneakers with breathable mesh upper and lightweight EVA sole. Dual wheels retract for seamless transition between walking and rolling. Suitable for beginners. EU sizes 31–40.",
     features: [
       "2-wheel hidden design",
       "Walk or roll function",
@@ -304,7 +302,7 @@ export const products: Product[] = [
   // RUNNING SHOES
   {
     id: "velocity-pro-x",
-    name: "Velocity Pro X",
+    name: "Pairobin Velocity Pro X Running Shoes – Carbon Fiber Plate, Responsive Foam",
     category: "Running",
     price: 159.99,
     originalPrice: 189.99,
@@ -314,7 +312,7 @@ export const products: Product[] = [
     badge: "bestseller",
     colors: ["#FF6B35", "#1a1a2e", "#ffffff"],
     sizes: ["6", "7", "8", "9", "10", "11", "12", "13"],
-    description: "High-performance running shoe engineered for speed and endurance. Features advanced cushioning technology.",
+    description: "Pairobin Velocity Pro X running shoes engineered for speed and endurance. Responsive foam midsole with embedded carbon fiber plate delivers energy return on every stride. Breathable mesh upper and high-traction rubber outsole. Men's sizes 6–13.",
     features: [
       "Responsive foam midsole",
       "Breathable mesh upper",
@@ -325,7 +323,7 @@ export const products: Product[] = [
   },
   {
     id: "marathon-elite-2",
-    name: "Marathon Elite 2.0",
+    name: "Pairobin Marathon Elite 2.0 Running Shoes – Ultra Cushioning, Engineered Knit",
     category: "Running",
     price: 189.99,
     rating: 4.9,
@@ -334,7 +332,7 @@ export const products: Product[] = [
     badge: "bestseller",
     colors: ["#FF6B35", "#000000"],
     sizes: ["6", "7", "8", "9", "10", "11", "12", "13"],
-    description: "Elite-level marathon shoe for serious runners. Maximum cushioning meets race-day performance.",
+    description: "Pairobin Marathon Elite 2.0 running shoes built for long-distance performance. Ultra-responsive cushioning paired with a carbon fiber energy plate reduces fatigue over marathon distances. Seamless engineered knit upper with reflective details for low-light visibility. Men's sizes 6–13.",
     features: [
       "Ultra-responsive cushioning",
       "Carbon fiber energy plate",
@@ -345,7 +343,7 @@ export const products: Product[] = [
   },
   {
     id: "sprint-pro-3",
-    name: "Sprint Pro 3.0",
+    name: "Pairobin Sprint Pro 3.0 Running Shoes – Speed Lacing, Propulsion Plate",
     category: "Running",
     price: 139.99,
     originalPrice: 169.99,
@@ -355,7 +353,7 @@ export const products: Product[] = [
     badge: "sale",
     colors: ["#1e3a5f", "#FF6B35", "#ffffff"],
     sizes: ["6", "7", "8", "9", "10", "11", "12"],
-    description: "Speed-focused running shoe for training and racing. Lightweight and responsive.",
+    description: "Pairobin Sprint Pro 3.0 running shoes designed for training and race day. Speed lacing system and propulsion plate work together for quick transitions. Lightweight mesh upper with durable rubber outsole. Men's sizes 6–12.",
     features: [
       "Lightweight mesh",
       "Speed lacing system",
@@ -367,7 +365,7 @@ export const products: Product[] = [
   // WALKING SHOES
   {
     id: "comfort-stride-elite",
-    name: "Comfort Stride Elite",
+    name: "Pairobin Comfort Stride Elite Walking Shoes – Memory Foam, Arch Support",
     category: "Walking",
     price: 129.99,
     rating: 4.9,
@@ -376,7 +374,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#1e3a5f", "#333333", "#f5f5f5"],
     sizes: ["6", "7", "8", "9", "10", "11", "12"],
-    description: "Premium walking shoe with ultimate comfort technology. Perfect for all-day wear.",
+    description: "Pairobin Comfort Stride Elite walking shoes with memory foam insole and integrated arch support technology. Shock-absorbing midsole and slip-resistant outsole provide all-day comfort on any surface. Breathable mesh lining keeps feet dry. Unisex sizes 6–12.",
     features: [
       "Memory foam insole",
       "Arch support technology",
@@ -387,7 +385,7 @@ export const products: Product[] = [
   },
   {
     id: "daily-walker-comfort",
-    name: "Daily Walker Comfort",
+    name: "Pairobin Daily Walker Comfort Shoes – Cushioned Footbed, Flexible Sole",
     category: "Walking",
     price: 99.99,
     originalPrice: 119.99,
@@ -397,7 +395,7 @@ export const products: Product[] = [
     badge: "sale",
     colors: ["#1e3a5f", "#ffffff"],
     sizes: ["6", "7", "8", "9", "10", "11", "12"],
-    description: "Everyday walking shoe designed for comfort and durability.",
+    description: "Pairobin Daily Walker Comfort shoes with cushioned footbed and flexible sole for everyday use. Breathable upper material provides ventilation during extended walks. Durable construction built for daily wear. Unisex sizes 6–12.",
     features: [
       "Cushioned footbed",
       "Breathable upper",
@@ -407,7 +405,7 @@ export const products: Product[] = [
   },
   {
     id: "urban-walk-pro",
-    name: "Urban Walk Pro",
+    name: "Pairobin Urban Walk Pro Shoes – Premium Leather Upper, Gel Cushioning",
     category: "Walking",
     price: 119.99,
     rating: 4.8,
@@ -415,7 +413,7 @@ export const products: Product[] = [
     image: productWalking,
     colors: ["#333333", "#1e3a5f", "#8B4513"],
     sizes: ["6", "7", "8", "9", "10", "11", "12"],
-    description: "Stylish urban walking shoe that combines comfort with modern aesthetics.",
+    description: "Pairobin Urban Walk Pro shoes combining premium leather upper with gel cushioning technology. Anatomical footbed conforms to foot shape for personalized support. Durable construction for urban commuting and casual wear. Unisex sizes 6–12.",
     features: [
       "Premium leather upper",
       "Gel cushioning",
@@ -425,7 +423,7 @@ export const products: Product[] = [
   },
   {
     id: "lightweight-cushioned-walking",
-    name: "Lightweight Cushioned Walking Sneakers",
+    name: "Pairobin Lightweight Cushioned Walking Sneakers – EVA Sole, Slip-On",
     category: "Walking",
     price: 29.00,
     rating: 4.6,
@@ -434,7 +432,7 @@ export const products: Product[] = [
     badge: "bestseller",
     colors: ["#1e3a5f", "#FF6B35", "#000000"],
     sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "Ultra-lightweight cushioned walking sneakers with breathable mesh for maximum comfort during long walks.",
+    description: "Pairobin lightweight cushioned walking sneakers with EVA midsole and breathable mesh upper. Slip-on design with flexible rubber outsole for effortless all-day wear. Ideal for casual walks and light activity. Unisex sizes 5–10.5.",
     features: [
       "Lightweight EVA cushioning",
       "Breathable mesh upper",
@@ -445,7 +443,7 @@ export const products: Product[] = [
   },
   {
     id: "walking-sock-sneakers",
-    name: "Lightweight Cushioned Walking Sock Sneakers",
+    name: "Pairobin Sock-Style Walking Sneakers – Knit Upper, Lightweight Cushioned Sole",
     category: "Walking",
     price: 29.00,
     rating: 4.7,
@@ -454,7 +452,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#000000", "#1e3a5f", "#FF6B35"],
     sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "Sock-style walking sneakers with lightweight cushioning for an ultra-comfortable fit that moves with you.",
+    description: "Pairobin sock-style walking sneakers with breathable knit upper that moves with your foot. Lightweight cushioned sole absorbs impact during long walks. Slip-on design for quick, hassle-free wear. Unisex sizes 5–10.5.",
     features: [
       "Sock-like fit design",
       "Breathable knit upper",
@@ -467,7 +465,7 @@ export const products: Product[] = [
   // KIDS SHOES
   {
     id: "kids-active-runner",
-    name: "Kids Active Runner",
+    name: "Pairobin Kids Active Runner Shoes – Velcro Strap, Machine Washable",
     category: "Kids",
     price: 79.99,
     originalPrice: 99.99,
@@ -477,9 +475,9 @@ export const products: Product[] = [
     badge: "sale",
     colors: ["#ff6b6b", "#4ecdc4", "#ffe66d"],
     sizes: ["1", "2", "3", "4", "5", "6", "7"],
-    description: "Colorful and durable running shoes for active kids. Designed for play and sport.",
+    description: "Pairobin Kids Active Runner shoes with easy-on Velcro strap and cushioned midsole. Breathable mesh keeps feet cool during play and sport. Durable rubber outsole withstands daily wear. Machine washable for easy care. Kids' sizes 1–7.",
     features: [
-      "Easy-on velcro strap",
+      "Easy-on Velcro strap",
       "Breathable mesh",
       "Cushioned midsole",
       "Durable rubber outsole",
@@ -488,7 +486,7 @@ export const products: Product[] = [
   },
   {
     id: "kids-play-trainer",
-    name: "Kids Play Trainer",
+    name: "Pairobin Kids Play Trainer Shoes – Reinforced Toe, Lightweight, Velcro",
     category: "Kids",
     price: 69.99,
     rating: 4.8,
@@ -497,7 +495,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#FF69B4", "#00CED1", "#FFD700"],
     sizes: ["1", "2", "3", "4", "5", "6", "7"],
-    description: "Versatile training shoe for kids who love to play. Comfortable and supportive.",
+    description: "Pairobin Kids Play Trainer shoes with reinforced toe cap and flexible sole for active play. Velcro closure allows kids to put on shoes independently. Lightweight design supports natural foot movement. Kids' sizes 1–7.",
     features: [
       "Velcro closure",
       "Lightweight design",
@@ -509,7 +507,7 @@ export const products: Product[] = [
   // OUTDOOR SHOES
   {
     id: "trail-blazer-xt",
-    name: "Trail Blazer XT",
+    name: "Pairobin Trail Blazer XT Hiking Shoes – Waterproof, Vibram Outsole",
     category: "Outdoor",
     price: 179.99,
     rating: 4.6,
@@ -517,7 +515,7 @@ export const products: Product[] = [
     image: productOutdoor,
     colors: ["#8b4513", "#2f4f4f", "#333333"],
     sizes: ["7", "8", "9", "10", "11", "12", "13"],
-    description: "Rugged trail shoe built for serious outdoor adventures. Superior grip and durability.",
+    description: "Pairobin Trail Blazer XT hiking shoes with waterproof membrane and Vibram outsole for superior trail grip. Reinforced toe cap and ankle support system protect against rough terrain. Aggressive tread pattern handles mud, rock, and loose gravel. Men's sizes 7–13.",
     features: [
       "Waterproof membrane",
       "Aggressive tread pattern",
@@ -528,7 +526,7 @@ export const products: Product[] = [
   },
   {
     id: "mountain-grip-pro",
-    name: "Mountain Grip Pro",
+    name: "Pairobin Mountain Grip Pro Hiking Shoes – Gore-Tex, Premium Leather",
     category: "Outdoor",
     price: 199.99,
     originalPrice: 229.99,
@@ -538,7 +536,7 @@ export const products: Product[] = [
     badge: "sale",
     colors: ["#2f4f4f", "#8b4513", "#000000"],
     sizes: ["7", "8", "9", "10", "11", "12", "13"],
-    description: "Premium hiking shoe for mountain terrain. Maximum protection and comfort.",
+    description: "Pairobin Mountain Grip Pro hiking shoes with Gore-Tex waterproof lining and premium leather upper. Rock plate protection shields feet from sharp terrain underfoot. Cushioned midsole reduces fatigue on long hikes. Men's sizes 7–13.",
     features: [
       "Gore-Tex lining",
       "Rock plate protection",
@@ -548,7 +546,7 @@ export const products: Product[] = [
   },
   {
     id: "trail-explorer",
-    name: "Trail Explorer",
+    name: "Pairobin Trail Explorer Outdoor Shoes – Quick-Dry, Multi-Terrain Traction",
     category: "Outdoor",
     price: 149.99,
     rating: 4.7,
@@ -557,7 +555,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#228B22", "#8b4513", "#333333"],
     sizes: ["7", "8", "9", "10", "11", "12"],
-    description: "Versatile trail shoe for hiking and light outdoor activities.",
+    description: "Pairobin Trail Explorer outdoor shoes with quick-dry upper and multi-terrain traction outsole. Breathable lining wicks moisture during warm-weather hikes. Lightweight construction reduces foot fatigue on long trails. Men's sizes 7–12.",
     features: [
       "Quick-dry upper",
       "Multi-terrain traction",
@@ -567,7 +565,7 @@ export const products: Product[] = [
   },
   {
     id: "water-hiking-aqua",
-    name: "Outdoor Water Hiking Shoes",
+    name: "Pairobin Water Hiking Shoes – Quick-Dry Aqua, Non-Slip Rubber Sole",
     category: "Outdoor",
     price: 39.00,
     rating: 4.7,
@@ -576,7 +574,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#2f4f4f", "#000000", "#1e3a5f"],
     sizes: ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"],
-    description: "Quick-dry aqua trekking footwear perfect for water activities and hiking. Lightweight with excellent drainage.",
+    description: "Pairobin water hiking shoes with quick-dry technology and built-in drainage holes for river crossings and water activities. Non-slip rubber outsole grips wet surfaces. Breathable mesh upper and lightweight construction for comfort on and off trails. Unisex sizes 6–11.",
     features: [
       "Quick-dry technology",
       "Drainage holes for water activities",
@@ -587,10 +585,10 @@ export const products: Product[] = [
     ]
   },
 
-  // TENNIS SHOES (NEW CATEGORY)
+  // TENNIS SHOES
   {
     id: "tennis-breathable-training",
-    name: "Breathable Tennis Shoes for Training & Match Play",
+    name: "Pairobin Breathable Tennis Shoes – Non-Marking Sole, Court Traction, Unisex",
     category: "Tennis",
     price: 15.00,
     rating: 4.5,
@@ -598,7 +596,7 @@ export const products: Product[] = [
     image: tennisWhite,
     colors: ["#FFFFFF", "#000000", "#1e3a5f"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "Breathable tennis shoes designed for training sessions and competitive match play. Excellent court grip.",
+    description: "Pairobin breathable tennis shoes with non-marking rubber outsole for indoor and outdoor courts. Cushioned insole absorbs impact during training and match play. Lightweight mesh upper provides ventilation. Unisex sizes 4–10.5.",
     features: [
       "Breathable mesh upper",
       "Non-marking rubber outsole",
@@ -609,7 +607,7 @@ export const products: Product[] = [
   },
   {
     id: "tennis-high-performance",
-    name: "High-Performance Tennis Shoes",
+    name: "Pairobin High-Performance Tennis Shoes – Lateral Support, Durable Rubber Sole",
     category: "Tennis",
     price: 15.00,
     rating: 4.6,
@@ -618,7 +616,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#FFFFFF", "#FF6B35", "#000000"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "High-performance tennis shoes for men and women. Built for speed and agility on any court surface.",
+    description: "Pairobin high-performance tennis shoes with enhanced lateral support and durable rubber sole for all court surfaces. Breathable construction keeps feet cool during intense rallies. Unisex fit in sizes 4–10.5.",
     features: [
       "Performance-focused design",
       "Enhanced lateral support",
@@ -629,7 +627,7 @@ export const products: Product[] = [
   },
   {
     id: "tennis-lateral-moves",
-    name: "Tennis Shoes Engineered for Quick Lateral Moves",
+    name: "Pairobin Tennis Shoes for Quick Lateral Movement – Reinforced Sidewalls, Pivot Outsole",
     category: "Tennis",
     price: 15.00,
     rating: 4.7,
@@ -638,7 +636,7 @@ export const products: Product[] = [
     badge: "bestseller",
     colors: ["#FFFFFF", "#1e3a5f", "#FF6B35"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "Tennis shoes specifically engineered for quick lateral movements. Superior ankle support and stability.",
+    description: "Pairobin tennis shoes engineered for quick lateral movement with reinforced sidewalls and quick-pivot outsole design. Superior ankle support and court-grip traction for competitive play. Breathable upper keeps feet comfortable. Unisex sizes 4–10.5.",
     features: [
       "Lateral support technology",
       "Quick-pivot outsole design",
@@ -648,10 +646,10 @@ export const products: Product[] = [
     ]
   },
 
-  // PICKLEBALL SHOES (NEW CATEGORY)
+  // PICKLEBALL SHOES
   {
     id: "pickleball-court-shoes",
-    name: "Pickleball Shoes for Indoor & Outdoor Courts",
+    name: "Pairobin Pickleball Court Shoes – Non-Marking Sole, Indoor & Outdoor, Unisex",
     category: "Pickleball",
     price: 69.00,
     rating: 4.8,
@@ -660,7 +658,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#FFFFFF", "#000000", "#FF6B35"],
     sizes: ["5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"],
-    description: "Purpose-built pickleball shoes for men and women. Designed for both indoor and outdoor court surfaces.",
+    description: "Pairobin pickleball court shoes with non-marking sole designed for both indoor and outdoor court surfaces. Lateral stability support prevents ankle roll during quick direction changes. Cushioned insole and breathable upper for match-day comfort. Unisex sizes 5–11.",
     features: [
       "Multi-court versatility",
       "Non-marking sole",
@@ -671,10 +669,10 @@ export const products: Product[] = [
     ]
   },
 
-  // CHEERLEADING SHOES (NEW CATEGORY)
+  // CHEERLEADING SHOES
   {
     id: "cheerleading-black-customizable",
-    name: "Black Cheerleading Shoes",
+    name: "Pairobin Black Cheerleading Shoes – Lightweight, Flexible Sole, Team Customizable",
     category: "Cheerleading",
     price: 39.00,
     rating: 4.7,
@@ -683,7 +681,7 @@ export const products: Product[] = [
     badge: "new",
     colors: ["#000000", "#FFFFFF"],
     sizes: ["4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5"],
-    description: "Professional black cheerleading shoes with customizable options. Perfect for cheer teams and competitions.",
+    description: "Pairobin black cheerleading shoes with lightweight construction and flexible sole for stunts, jumps, and tumbling. Breathable upper and secure fit keep feet stable during routines. Available for retail and wholesale with team customization options. Unisex sizes 4–10.5.",
     features: [
       "Lightweight design",
       "Flexible sole for stunts",
@@ -695,7 +693,7 @@ export const products: Product[] = [
   }
 ];
 
-// Category configuration - updated with new categories
+// Category configuration
 export const categories = [
   { name: "All", slug: "all", count: products.length },
   { name: "Running", slug: "running", count: products.filter(p => p.category === "Running").length },
@@ -709,23 +707,19 @@ export const categories = [
   { name: "Cheerleading", slug: "cheerleading", count: products.filter(p => p.category === "Cheerleading").length },
 ];
 
-// Get featured products
 export const getFeaturedProducts = () => {
   return products.filter(p => p.badge === "bestseller" || p.badge === "new").slice(0, 8);
 };
 
-// Get products by category
 export const getProductsByCategory = (category: string) => {
   if (category === "all") return products;
   return products.filter(p => p.category.toLowerCase() === category.toLowerCase());
 };
 
-// Get product by ID
 export const getProductById = (id: string) => {
   return products.find(p => p.id === id);
 };
 
-// Get related products
 export const getRelatedProducts = (productId: string, limit = 4) => {
   const product = getProductById(productId);
   if (!product) return [];
