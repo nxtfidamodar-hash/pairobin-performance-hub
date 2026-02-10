@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -203,15 +203,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>support@pairobin.com</span>
+                <span>info@pairobin.com</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+86 180 6006 1837</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>Global Headquarters<br />Los Angeles, CA</span>
+                <span>ROOM 122, 12/F, TUNG LEE INDUSTRIAL BUILDING<br />9 LAI YIP STREET, KWUN TONG<br />KOWLOON, HONG KONG</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
+                <Clock className="w-4 h-4 mt-0.5 shrink-0" />
+                <span>Mon – Fri: 9:00 AM – 6:00 PM</span>
               </li>
             </ul>
           </div>
@@ -223,7 +227,9 @@ export function Footer() {
         <div className="container-wide py-8">
           <div className="flex flex-col items-center gap-6">
             <p className="text-sm text-primary-foreground/70 text-center">
-              © {new Date().getFullYear()} <span className="font-bold text-primary-foreground">Pairobin,</span> All Rights Reserved. Designed By Jibril Soft
+              © 2026 <span className="font-bold text-primary-foreground">Pairobin.</span> All Rights Reserved.
+              <br />
+              <span className="text-primary-foreground/50 text-xs mt-1 inline-block">Operated by 石狮市派罗宾运动科技有限公司 (Pairobin)</span>
             </p>
             
             {/* Payment Methods */}
