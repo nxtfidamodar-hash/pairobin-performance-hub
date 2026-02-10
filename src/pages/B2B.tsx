@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout";
 import { Link } from "react-router-dom";
-import { ArrowRight, Building2, Package, Palette, Globe, CheckCircle, FileText, Headphones, Truck, Award, Users } from "lucide-react";
+import { ArrowRight, Building2, Package, Palette, Globe, CheckCircle, Headphones, Truck, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
@@ -85,18 +85,12 @@ const B2B = () => {
                 We offer competitive wholesale pricing, OEM/ODM manufacturing, 
                 and dedicated business support.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button variant="accent" size="lg" asChild>
-                  <a href="#inquiry-form">
-                    Request Quote
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </a>
-                </Button>
-                <Button variant="outlineLight" size="lg">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Download Catalog
-                </Button>
-              </div>
+              <Button variant="accent" size="lg" asChild>
+                <a href="#inquiry-form">
+                  Request Quote
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-3xl p-8 text-center">
