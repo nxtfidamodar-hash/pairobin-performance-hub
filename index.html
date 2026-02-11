@@ -39,6 +39,24 @@
   </head>
 
   <body>
+    <!-- Hidden Netlify forms for SPA detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="subject"></select>
+      <input type="text" name="orderNumber" />
+      <textarea name="message"></textarea>
+    </form>
+    <form name="b2b-inquiry" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="companyName" />
+      <input type="text" name="contactName" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="country" />
+      <select name="businessType"></select>
+      <select name="productInterest"></select>
+      <textarea name="message"></textarea>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
