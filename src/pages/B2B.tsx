@@ -59,12 +59,33 @@ const B2B = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Inquiry Submitted!",
-      description: "Our B2B team will contact you within 24 hours.",
-    });
+    setIsSubmitting(true);
+    try {
+      const form = e.target as HTMLFormElement;
+      const body = new URLSearchParams(new FormData(form) as any).toString();
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      toast({
+        title: "Inquiry Submitted!",
+        description: "Our B2B team will contact you within 24 hours.",
+      });
+      setFormData({ companyName: "", contactName: "", email: "", phone: "", country: "", businessType: "", productInterest: "", message: "" });
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -187,7 +208,9 @@ const B2B = () => {
                 Fill out the form below and our B2B team will contact you within 24 hours.
               </p>
             </div>
-            <form onSubmit={handleSubmit} className="bg-secondary rounded-3xl p-8 md:p-12">
+            <form onSubmit={handleSubmit} name="b2b-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" className="bg-secondary rounded-3xl p-8 md:p-12">
+              <input type="hidden" name="form-name" value="b2b-inquiry" />
+              <p className="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">Company Name *</label>
@@ -281,8 +304,8 @@ const B2B = () => {
                   />
                 </div>
               </div>
-              <Button type="submit" variant="accent" size="lg" className="w-full mt-8">
-                Submit Inquiry
+              <Button type="submit" variant="accent" size="lg" className="w-full mt-8" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit Inquiry"}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </form>

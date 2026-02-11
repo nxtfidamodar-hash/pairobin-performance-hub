@@ -45,13 +45,33 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    setFormData({ name: "", email: "", subject: "", orderNumber: "", message: "" });
+    setIsSubmitting(true);
+    try {
+      const form = e.target as HTMLFormElement;
+      const body = new URLSearchParams(new FormData(form) as any).toString();
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      setFormData({ name: "", email: "", subject: "", orderNumber: "", message: "" });
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -114,7 +134,9 @@ const Contact = () => {
               <p className="text-muted-foreground mb-8">
                 Fill out the form below and we'll get back to you as soon as possible.
               </p>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" className="space-y-6">
+                <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium mb-2">Your Name *</label>
@@ -176,8 +198,8 @@ const Contact = () => {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                   />
                 </div>
-                <Button type="submit" variant="accent" size="lg">
-                  Send Message
+                <Button type="submit" variant="accent" size="lg" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <Send className="w-4 h-4 ml-2" />
                 </Button>
               </form>
